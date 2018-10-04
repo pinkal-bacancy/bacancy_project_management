@@ -23,6 +23,9 @@ default: &default
 
 development:
   <<: *default
+  username: postgres
+  password: postgres
+  host: localhost
   database: BacancyProjectManagement_development
   username: postgres
   password: postgres

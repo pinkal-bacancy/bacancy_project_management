@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project_name: MyString
+  technologies: MyString
+  start_date: 2018-10-03
+  end_date: 2018-10-03
+  rough_order_magnitude: MyString
+  references: 
+  references: 
+
+two:
+  project_name: MyString
+  technologies: MyString
+  start_date: 2018-10-03
+  end_date: 2018-10-03
+  rough_order_magnitude: MyString
+  references: 
+  references: 
