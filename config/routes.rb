@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :employees
+  devise_for :employees, controllers:
+  {
+    sessions: 'employees/sessions',
+    registrations: 'employees/registrations',
+  }
+  
+  resources :projects
   get 'clients/new'
   get 'clients/index'
   get 'clients/edit'
@@ -8,10 +14,7 @@ Rails.application.routes.draw do
   get 'assignments/index'
   get 'assignments/edit'
   get 'assignments/show'
-  get 'projects/new'
-  get 'projects/index'
-  get 'projects/edit'
-  get 'projects/show'
+ 	
   get 'static_page/index'
   root 'static_page#index'
 

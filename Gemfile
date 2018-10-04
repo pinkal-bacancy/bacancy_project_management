@@ -31,6 +31,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem "font-awesome-rails"
+gem 'simple-line-icons-rails'
+gem 'themify-icons-rails' , github: 'scratch-soft/themify-icons-rails'
 gem "pry-rails"
 
 # Use ActiveStorage variant
