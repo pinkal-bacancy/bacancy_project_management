@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
+# employee model
 class Employee < ApplicationRecord
-	has_many :assignments
-	has_many :projects, through: :assignments
+  has_many :assignments
+  has_many :projects, through: :assignments
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

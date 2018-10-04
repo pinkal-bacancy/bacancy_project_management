@@ -12,6 +12,7 @@
 //
 //= require rails-ujs
 //= require activestorage
+//= require jquery
 //= require turbolinks
 //= require cable
 //= require custom
@@ -20,11 +21,12 @@
 //= require sidebarmenu
 //= require waves
 //= require popper.min
+//= require jquery.validate.min
+//= require jquery.validate
 //= require jquery-3.2.1.min
 //= require bootstrap.min
 //= require moment
 //= require activestorage
-//= require turbolinks
 //= require email-decode.min
 //= require datatable.min
 //= require material-datetimepicker
