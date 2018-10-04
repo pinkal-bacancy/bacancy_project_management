@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :employees
   get 'clients/new'
   get 'clients/index'
   get 'clients/edit'
@@ -11,7 +12,7 @@ Rails.application.routes.draw do
   get 'projects/index'
   get 'projects/edit'
   get 'projects/show'
-  devise_for :employees
-  # root 	to: "employees/sessions#new"
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'static_page/index'
+  root 'static_page#index'
+
 end
