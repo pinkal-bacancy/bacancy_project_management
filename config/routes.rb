@@ -1,13 +1,18 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+
   resources :employees
   resources :projects
   resources :assignments
   resources :clients
   
-  devise_for :employees
- 
+  devise_for :employees, controllers:
+  {
+    sessions: 'employees/sessions',
+    registrations: 'employees/registrations',
+  }
+  
   get 'static_page/index'
   root 'static_page#index'
 end

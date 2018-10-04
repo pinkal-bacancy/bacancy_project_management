@@ -14,7 +14,10 @@
 
   </head>
 
-  <body>
+  <body class="horizontal-nav skin-megna-dark fixed-layout">
+    <div id="main-wrapper">
+      <%= render partial: '/static_page/header' %>
+      <%= render partial: '/static_page/left_sidebar'%>
     <%= yield %>
   </body>
 </html>
