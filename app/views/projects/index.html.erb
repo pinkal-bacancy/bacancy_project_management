@@ -1,2 +1,48 @@
-<h1>Projects#index</h1>
-<p>Find me in app/views/projects/index.html.erb</p>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Project List</h4>
+					<div class="table-responsive m-t-40">
+					  <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+					  	<thead>
+						    <tr>
+						        <th>Project Name</th>
+						        <th>Start Date</th>
+						        <th>End Date</th>
+						        <th>Rough Order Magnitude</th>
+						        <th>Employees</th>
+						        <th>Client</th>
+						        <th>Technologies</th>
+						        <th colspan="3">Action</th>
+						        
+						    </tr>
+							</thead>
+							<tbody>
+								<% @projects&.each do |project| %>
+									<tr>
+						        <td><%= project&.project_name %></td>
+						        <td><%= project&.start_date %></td>
+						        <td><%= project&.end_date %></td>
+						        <td><%= project&.rough_order_magnitude %></td>
+						        <td><%= find_employee(project) %></td>
+						        <td><%= project&.client&.client_name %></td>
+						        <!-- label label-info -->
+						        <td><% project&.technologies.each do |technology| %>
+						        	<span class="label label-inverse"><%= technology&.name%></span><br>
+						        	<% end %>
+						        </td>
+						        <td><%= link_to "Show",project_path(project),remote: true, class: "btn btn-warning" %></td>
+						        <td><%= link_to "Edit",edit_project_path(project), class: "btn btn-success"%></td>
+						        <td><%#= link_to "Delete",project_path(project),method: :delete, data: { confirm: 'Are you sure you want to delete this?' },class: "btn btn-danger" %><%= button_to "Delete", project, method: :delete,  class: "btn btn-danger",data: { confirm: 'Are you sure you want to delete this?' } %></td>
+						    	</tr>
+								<% end %>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal"></div>
