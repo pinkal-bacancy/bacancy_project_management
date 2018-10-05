@@ -1,8 +1,17 @@
 <%= javascript_include_tag "employees"  %>
-<h2>New Employee</h2>
-<%= form_for @employee do |f| %>
-	<%= render "form", f: f %>
-<% end %>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Edit Employee</h4>
+				<%= form_for @employee do |f| %>
+					<%= render "form", f: f %>
+					<%= f.submit "Update Employee", id: "employee_submit", class: "btn btn-success waves-effect waves-light m-r-10" %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
 
 <script type="text/javascript">
 	$(document).on('ready',function(){

@@ -2,7 +2,7 @@
 
 # employee controller
 class EmployeesController < ApplicationController
-  before_action :find_employee, only: [:edit, :update, :destroy, :show]
+  before_action :find_employee, only: %i[edit update destroy show]
 
   def new
     @employee = Employee.new
@@ -28,7 +28,7 @@ class EmployeesController < ApplicationController
 
   def update
     if @employee.update(delivery_boy_params)
-      redirect_to employee_path(@employee)
+      redirect_to employees_path
     else
       render 'edit'
     end
@@ -59,6 +59,7 @@ class EmployeesController < ApplicationController
 
   def delivery_boy_params
     params.require(:employee).permit(:first_name, :last_name,
-                                     :username, :primary_technology, :secondary_technology, :email)
+                                     :username, :primary_technology,
+                                     :secondary_technology, :email)
   end
 end

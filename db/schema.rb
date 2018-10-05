@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_04_081112) do
+ActiveRecord::Schema.define(version: 2018_10_05_101606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,16 +63,20 @@ ActiveRecord::Schema.define(version: 2018_10_04_081112) do
 
   create_table "projects", force: :cascade do |t|
     t.string "project_name"
-    t.string "technologies", default: [], array: true
     t.date "start_date"
     t.date "end_date"
     t.string "rough_order_magnitude"
-    t.bigint "employee_id"
     t.bigint "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "employee_id"
     t.index ["client_id"], name: "index_projects_on_client_id"
     t.index ["employee_id"], name: "index_projects_on_employee_id"
+  end
+
+  create_table "projects_technologies", id: false, force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.bigint "technology_id", null: false
   end
 
   create_table "roles", force: :cascade do |t|
@@ -85,6 +89,13 @@ ActiveRecord::Schema.define(version: 2018_10_04_081112) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
+  create_table "technologies", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "assignments", "employees"
   add_foreign_key "assignments", "projects"
+  add_foreign_key "projects", "employees"
 end

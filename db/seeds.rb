@@ -7,3 +7,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+technologies = ['ROR', 'Node JS', 'React JS', 'PHP', 'iOS', 'Android', 'GOlang', 'React Native', 'Vue JS', '.NET', 'Angular JS']
+
+technologies.each do |technology|
+	@technology1 = Technology.find_or_create_by(name: technology)
+end
