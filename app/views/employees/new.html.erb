@@ -7,5 +7,27 @@
 <script type="text/javascript">
 	$(document).on('ready',function(){
 		Employees.form.formValidation();
+		//ajax call to check unique email validation
+		$("#employee_email").on("change", function(){
+			$.ajax({
+         url: '/unique_username.js',
+         method: 'GET',
+         data: {
+           email: $(this).val(),
+           username: $("#employee_username").val()
+         }
+       });
+		});
+		//ajax call to check unique username validation
+		$("#employee_username").on("change", function(){
+			$.ajax({
+         url: '/unique_username.js',
+         method: 'GET',
+         data: {
+           username: $(this).val(),
+           email: $("#employee_email").val()
+         }
+       });
+		});
 	});
 </script>

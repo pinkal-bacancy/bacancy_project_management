@@ -1,19 +1,21 @@
 <%= f.label :first_name %>
-	<%= f.text_field :first_name, placeholder: "First Name"%><br>
+<%= f.text_field :first_name, placeholder: "First Name"%><br>
 
-	<%= f.label :last_name %>
-	<%= f.text_field :last_name, placeholder: "Last Name"%><br>
+<%= f.label :last_name %>
+<%= f.text_field :last_name, placeholder: "Last Name"%><br>
 
-	<%= f.label :username %>
-	<%= f.text_field :username, placeholder: "Username"%><br>
+<%= f.label :username %>
+<%= f.text_field :username, placeholder: "Username"%>
+<span id="unique_username" style="display: none;">Username has already been taken.</span><br>
 
-	<%= f.label :email %>
-	<%= f.text_field :email, placeholder: "Email"%><br>
+<%= f.label :email %>
+<%= f.text_field :email, placeholder: "Email"%>
+<span id="unique_email" style="display: none;">Email has already been taken.</span><br>
 
-	<%= f.label :primary_technology %>
-	<%= f.text_field :primary_technology, placeholder: "Primary Technology"%><br>
+<%= f.label :primary_technology %>
+<%= f.text_field :primary_technology, placeholder: "Primary Technology"%><br>
 
-	<%= f.label :secondary_technology %>
-	<%= f.text_field :secondary_technology, placeholder: "Secondary Technology"%><br>
+<%= f.label :secondary_technology %>
+<%= f.text_field :secondary_technology, placeholder: "Secondary Technology"%><br>
 
-	<%= f.submit %>
+<%= f.submit "Add Employee", id: "employee_submit" %>

@@ -1,0 +1,17 @@
+<% if @employee_email.nil? && !@employee_username.nil? %>
+	$("#unique_email").hide();
+	$("#unique_username").show();
+	$("#employee_submit").attr("disabled",true);
+<% elsif !@employee_email.nil? && @employee_username.nil? %>
+	$("#unique_email").show();
+	$("#employee_submit").attr("disabled",true);
+	$("#unique_username").hide();
+<% elsif !@employee_email.nil? && !@employee_username.nil?  %>
+	$("#unique_email").show();
+	$("#employee_submit").attr("disabled",true);
+	$("#unique_username").show();
+<% else %>
+	$("#unique_email").hide();
+	$("#employee_submit").attr("disabled",false);
+	$("#unique_username").hide();
+<% end %>
