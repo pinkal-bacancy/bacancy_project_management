@@ -35,10 +35,11 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-
+gem 'country_select'
 gem "font-awesome-rails"
 gem 'simple-line-icons-rails'
 gem 'themify-icons-rails' , github: 'scratch-soft/themify-icons-rails'
+gem 'bootstrap-sass', '~> 3.3.7'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
