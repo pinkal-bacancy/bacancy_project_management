@@ -27,6 +27,17 @@ Employees = {
         }
 
 			});
+      $('.edit_employee').validate({
+        rules: {
+          'employee[first_name]': {required: true},
+          'employee[last_name]': {required: true},
+          'employee[username]': {required: true},
+          'employee[email]': {required: true,emailValid: true},
+          'employee[primary_technology]': {required: true},
+          'employee[secondary_technology]': {required: true}
+        }
+
+      });
 			// code here
 		}
 	}

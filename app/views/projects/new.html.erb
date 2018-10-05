@@ -1,2 +1,20 @@
-<h1>Projects#new</h1>
-<p>Find me in app/views/projects/new.html.erb</p>
+<%= javascript_include_tag "projects"  %>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-body">
+				<h4 class="card-title">New Project</h4>
+				<%= form_for @project,class: "form" do |f| %>
+					<%= render "form", f: f %>
+					<%= f.submit "Add Project", id: "employee_submit", class: "btn btn-success waves-effect waves-light m-r-10" %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(document).on('ready',function(){
+		Projects.form.formValidation();
+	});
+</script>

@@ -1,21 +1,43 @@
-<%= f.label :first_name %>
-<%= f.text_field :first_name, placeholder: "First Name"%><br>
+<div class="form-group m-t-40 row">
+	<%= f.label :first_name, class: "col-2 col-form-label" %>
+	<div class="col-10">
+		<%= f.text_field :first_name, class: "form-control", placeholder: "First Name"%>
+	</div>
+</div>
 
-<%= f.label :last_name %>
-<%= f.text_field :last_name, placeholder: "Last Name"%><br>
+<div class="form-group m-t-40 row">
+	<%= f.label :last_name, class: "col-2 col-form-label" %>
+	<div class="col-10">
+		<%= f.text_field :last_name, class: "form-control", placeholder: "Last Name"%>
+	</div>
+</div>
 
-<%= f.label :username %>
-<%= f.text_field :username, placeholder: "Username"%>
-<span id="unique_username" style="display: none;">Username has already been taken.</span><br>
+<div class="form-group m-t-40 row">
+	<%= f.label :username, class: "col-2 col-form-label" %>
+	<div class="col-10">
+		<%= f.text_field :username, class: "form-control", placeholder: "Username"%>
+<span id="unique_username" style="display: none;">Username has already been taken.</span></div>
+</div>
 
-<%= f.label :email %>
-<%= f.text_field :email, placeholder: "Email"%>
-<span id="unique_email" style="display: none;">Email has already been taken.</span><br>
+<div class="form-group m-t-40 row">
+	<%= f.label :email, class: "col-2 col-form-label" %>
+	<div class="col-10">
+		<%= f.text_field :email, class: "form-control", placeholder: "Email"%>
+<span id="unique_email" style="display: none;">Email has already been taken.</span>
+</div>
+</div>
 
-<%= f.label :primary_technology %>
-<%= f.text_field :primary_technology, placeholder: "Primary Technology"%><br>
+<div class="form-group m-t-40 row">
+	<%= f.label :primary_technology, class: "col-2 col-form-label" %>
+	<div class="col-10">
+		<%= f.text_field :primary_technology, class: "form-control", placeholder: "Primary Technology"%>
+	</div>
+</div>
 
-<%= f.label :secondary_technology %>
-<%= f.text_field :secondary_technology, placeholder: "Secondary Technology"%><br>
+<div class="form-group m-t-40 row">
+	<%= f.label :secondary_technology, class: "col-2 col-form-label" %>
+	<div class="col-10">
+		<%= f.text_field :secondary_technology, class: "form-control", placeholder: "Secondary Technology"%>
+	</div>
+</div>
 
-<%= f.submit "Add Employee", id: "employee_submit" %>
