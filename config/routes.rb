@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
 
-  resources :employees
+  resources :employees, path: 'employee'
   resources :projects
   resources :assignments
   resources :clients
