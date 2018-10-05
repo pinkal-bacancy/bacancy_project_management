@@ -1,0 +1,8 @@
+<% if @employee.empty? %>
+	$("#unique_email").hide();
+	$("#unique_username").hide();
+	$("#employee_submit").attr("disabled",false);
+<% else %>
+	$("#employee_submit").attr("disabled",true);
+	$("#unique_email").show();
+<% end %>
