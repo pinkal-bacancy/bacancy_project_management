@@ -1,29 +1,71 @@
-<h2>Sign up</h2>
+<%#= render "employees/shared/links" %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<section id="wrapper">
+  <div class="login-register">
+    <div class="login-box card">
+      <div class="card-body">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: 'form-horizontal form-material', id: 'loginform') do |f| %>
+          <h3 class="box-title m-b-20">Sign Up</h3>
+          <div class="form-group">
+            <div class="col-xs-12">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: 'Email' %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-xs-12">
+              <%= f.text_field :username, class: "form-control", placeholder: 'User Name' %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-xs-12">
+              <%= f.text_field :first_name, class: "form-control", placeholder: 'First Name' %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-xs-12">
+              <%= f.text_field :last_name, class: "form-control", placeholder: 'Last Name' %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-xs-12">
+              <%= f.text_field :primary_technology, class: "form-control", placeholder: 'Primary Technology' %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-xs-12">
+              <%= f.text_field :secondary_technology, class: "form-control", placeholder: 'Secondary Technology' %>
+            </div>
+          </div>
+          <div class="form-group ">
+            <div class="col-xs-12">
+              <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: 'Password' %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-xs-12">
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: 'Confirm password' %>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-12">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                <label class="custom-control-label" for="customCheck1">I agree to all <a href="javascript:void(0)">Terms</a></label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group text-center p-b-20">
+            <div class="col-xs-12">
+              <%= f.submit "Sign up", class: 'btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light' %>
+            </div>
+          </div>
+          <div class="form-group m-b-0">
+            <div class="col-sm-12 text-center">
+              Already have an account? <%= link_to 'Sign In', new_employee_session_path %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "employees/shared/links" %>
+</section>

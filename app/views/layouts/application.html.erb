@@ -17,7 +17,12 @@
   <body class="horizontal-nav skin-megna-dark fixed-layout">
     <div id="main-wrapper">
       <%= render partial: '/static_page/header' %>
-      <%= render partial: '/static_page/left_sidebar'%>
-    <%= yield %>
+      <% if employee_signed_in? %>
+        <%= render partial: '/static_page/left_sidebar'%>
+      <% end %>
+      <!-- Page wrapper  -->
+      <div class="page-wrapper">
+        <%= yield %>
+      </div>
   </body>
 </html>
