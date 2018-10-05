@@ -13,6 +13,7 @@ class EmployeesController < ApplicationController
     password = SecureRandom.hex(8)
     @employee.password = password
     if @employee.save
+      EmployeeMailer.employee_send_password_email(@employee).deliver_now
       redirect_to employees_path
     else
       render 'new'
@@ -31,6 +32,16 @@ class EmployeesController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  # def unique_employee
+  #   @employee_email = Employee.find_by(email: params[:email])
+  #   @employee_username = Employee.find_by(username: params[:username])
+  # end
+
+  def unique_username
+    @employee_email = Employee.find_by(email: params[:email])
+    @employee_username = Employee.find_by(username: params[:username])
   end
 
   def destroy
