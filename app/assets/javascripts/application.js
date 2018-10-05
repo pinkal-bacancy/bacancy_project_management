@@ -31,3 +31,4 @@
 //= require datatable.min
 //= require material-datetimepicker
 //= require datepicker
+//= require_tree .

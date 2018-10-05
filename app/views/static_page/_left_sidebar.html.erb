@@ -35,24 +35,21 @@
             </li>
           </ul>
         </li>
-        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-layout-accordion-merged"></i><span class="hide-menu">Tables</span></a>
-            <ul aria-expanded="false" class="collapse">
-                <li><a href="table-basic.html">Basic Tables</a></li>
-                <li><a href="table-layout.html">Table Layouts</a></li>
-                <li><a href="table-data-table.html">Data Tables</a></li>
-                <li><a href="table-footable.html">Footable</a></li>
-                <li><a href="table-jsgrid.html">Js Grid Table</a></li>
-                <li><a href="table-responsive.html">Responsive Table</a></li>
-                <li><a href="table-bootstrap.html">Bootstrap Tables</a></li>
-                <li><a href="table-editable-table.html">Editable Table</a></li>
-            </ul>
+        <li>
+          <%= link_to '', class: 'has-arrow waves-effect waves-dark' do %>
+            <i class="ti-layout-accordion-merged"></i><span class="hide-menu">Client</span>
+          <% end %>
+          <ul aria-expanded="false" class="collapse">
+            <li><%= link_to 'Client List', clients_path %></li>
+            <li><%= link_to 'New Client', new_client_path %></li>
+          </ul>
         </li>
         <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-settings"></i><span class="hide-menu">Widgets</span></a>
-            <ul aria-expanded="false" class="collapse">
-                <li><a href="widget-data.html">Data Widgets</a></li>
-                <li><a href="widget-apps.html">Apps Widgets</a></li>
-                <li><a href="widget-charts.html">Charts Widgets</a></li>
-            </ul>
+          <ul aria-expanded="false" class="collapse">
+            <li><a href="widget-data.html">Data Widgets</a></li>
+            <li><a href="widget-apps.html">Apps Widgets</a></li>
+            <li><a href="widget-charts.html">Charts Widgets</a></li>
+          </ul>
         </li>
       </ul>
     </nav>

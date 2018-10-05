@@ -9,7 +9,7 @@ class EmployeesController < ApplicationController
   end
 
   def create
-    @employee = Employee.new(delivery_boy_params)
+    @employee = Employee.new(employee_params)
     password = SecureRandom.hex(8)
     @employee.password = password
     if @employee.save
@@ -27,7 +27,7 @@ class EmployeesController < ApplicationController
   def edit; end
 
   def update
-    if @employee.update(delivery_boy_params)
+    if @employee.update(employee_params)
       redirect_to employee_path(@employee)
     else
       render 'edit'
@@ -57,7 +57,7 @@ class EmployeesController < ApplicationController
     @employee = Employee.find(params[:id]) rescue nil
   end
 
-  def delivery_boy_params
+  def employee_params
     params.require(:employee).permit(:first_name, :last_name,
                                      :username, :primary_technology, :secondary_technology, :email)
   end
