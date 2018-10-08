@@ -20,7 +20,7 @@
 					        	<%= link_to edit_technology_path(technology) do %> 
 					        		<i class="fa fa-edit icon-color-size" data-toggle="tooltip" data-placement="top" title="Edit"></i>   
 					        	<% end %>
-					        	<%= link_to technology_path(technology), method: :delete do %> 
+					        	<%= link_to technology_path(technology), method: :delete, data: {confirm: 'Are you sure? '} do %> 
 					        		<i class="fa fa-trash icon-color-size" data-toggle="tooltip" data-placement="top" title="Delete"></i>
 					        	<% end %></td>
 					    	</tr>

@@ -29,7 +29,7 @@
 					        	<%= link_to edit_client_path(client) do %> 
 					        		<i class="fa fa-edit icon-color-size" data-toggle="tooltip" data-placement="top" title="Edit"></i>   
 					        	<% end %>
-					        	<%= link_to client_path(client), method: :delete do %> 
+					        	<%= link_to client_path(client), method: :delete, data: {confirm: 'Are you sure? '} do %> 
 					        		<i class="fa fa-trash icon-color-size" data-toggle="tooltip" data-placement="top" title="Delete"></i>
 					        	<% end %>
 					        </td>
