@@ -2,7 +2,7 @@
 
 # employee controller
 class EmployeesController < ApplicationController
-  before_action :find_employee, only: %i[edit update destroy show]
+  before_action :find_employee, only: %i[edit update destroy show change_role]
 
   def new
     @employee = Employee.new
@@ -22,16 +22,23 @@ class EmployeesController < ApplicationController
 
   def index
     @employees = Employee.all
+    @roles = Role.all
   end
 
   def edit; end
 
   def update
     if @employee.update(employee_params)
-      redirect_to employee_path(@employee)
+      redirect_to employees_path
     else
       render 'edit'
     end
+  end
+
+  def change_role
+    @roles = Role.all
+    @employee&.roles&.delete_all
+    @employee&.add_role params[:role]
   end
 
   # def unique_employee

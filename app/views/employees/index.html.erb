@@ -8,26 +8,30 @@
 					  	<thead>
 						    <tr>
 						        <th>Email</th>
-						        <th>First Name</th>
-						        <th>Last Name</th>
+						        <th>Name</th>
 						        <th>Username</th>
 						        <th>Primary Technology</th>
 						        <th>Secondary Technology</th>
-						        <th>Edit</th>
-						        <th>Delete</th>
+						        <th>Role</th>
+						        <th>Change Role</th>
+						        <th colspan="3">Action</th>
 						    </tr>
 							</thead>
 							<tbody>
 								<% @employees&.each do |employee| %>
 									<tr>
 						        <td><%= employee&.email %></td>
-						        <td><%= employee&.first_name %></td>
-						        <td><%= employee&.last_name %></td>
+						        <td><%= employee&.first_name %> <%= employee&.last_name %></td>
 						        <td><%= employee&.username %></td>
 						        <td><%= employee&.primary_technology %></td>
 						        <td><%= employee&.secondary_technology %></td>
+						        <td id="employee-role-<%= employee&.id%>"><%= employee&.roles&.first&.name %></td>
+						        <td>
+						        		<%= select_tag "role",options_for_select(@roles.map{|role| [role&.name,role&.id]}, selected: employee&.roles&.first&.id),id: "select-#{employee&.id}", data: { value: "#{employee&.id}"} %>
+						        		<%= button_tag "Change Role", class: "btn btn-warning change-employee-role", id: "change_role_btn-#{employee&.id}", data: { value: "#{employee&.id}"}  %>
+						        </td>
 						        <td><%= link_to "Edit",edit_employee_path(employee), class: "btn btn-primary"%></td>
-						        <td><%#= link_to "Delete",employee_path(employee),method: :delete, data: { confirm: 'Are you sure you want to delete this?' },class: "btn btn-danger" %><%= button_to "Delete", employee, method: :delete,  class: "btn btn-danger",data: { confirm: 'Are you sure you want to delete this?' } %></td>
+						        <td><%= button_to "Delete", employee, method: :delete,  class: "btn btn-danger",data: { confirm: 'Are you sure you want to delete this?' } %></td>
 						    	</tr>
 								<% end %>
 							</tbody>
@@ -37,3 +41,20 @@
 			</div>
 		</div>
 	</div>
+
+<script type="text/javascript">
+	$(document).on('ready',function(){
+		$(".change-employee-role").on("click", function(){
+			$(this).parent().find('select option:selected').text();
+			debugger;
+				$.ajax({
+	         url: '/change_role.js',
+	         method: 'GET',
+	         data: {
+	           role: $("select[data-value='" + $(this).attr('data-value') + "'] option:selected").text(), //$(this).parent().find('select option:selected').text(),
+	           id: $(this).attr('data-value')
+	         }
+	      });
+		});
+	});
+</script>

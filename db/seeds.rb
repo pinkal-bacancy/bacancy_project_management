@@ -12,3 +12,7 @@ technologies = ['ROR', 'Node JS', 'React JS', 'PHP', 'iOS', 'Android', 'GOlang',
 technologies.each do |technology|
 	@technology1 = Technology.find_or_create_by(name: technology)
 end
+ROLES=["Admin","PM","Sales & Marketing"]
+ROLES.each do |role|
+	Role.find_or_create_by(name: role)
+end
