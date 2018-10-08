@@ -3,6 +3,7 @@
 # projects controller
 class ProjectsController < ApplicationController
   before_action :find_project, only: %i[edit update destroy show]
+  before_action :breadcrumb_path, only: %i[new show]
 
   def new
   	@project = Project.new
@@ -22,6 +23,8 @@ class ProjectsController < ApplicationController
   end
 
   def index
+    add_breadcrumb "Home", root_path
+    add_breadcrumb "Projects", projects_path, :title => "Back to the Index"
   	@projects = Project.all
   end
 
@@ -54,6 +57,12 @@ class ProjectsController < ApplicationController
   end
 
   private
+
+  def breadcrumb_path
+    add_breadcrumb "Home", root_path
+    add_breadcrumb "Projects", projects_path, :title => "Back to the Index"
+    add_breadcrumb "Add Project", new_project_path, :title => "Back to the Index"
+  end
 
   def find_project
     @project = Project.find(params[:id]) rescue nil
