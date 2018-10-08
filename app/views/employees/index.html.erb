@@ -37,7 +37,7 @@
 					        	<%= link_to edit_employee_path(employee) do %> 
 					        		<i class="fa fa-edit icon-color-size" data-toggle="tooltip" data-placement="top" title="Edit"></i>   
 					        	<% end %>
-					        	<%= link_to employee_path(employee), method: :delete do %> 
+					        	<%= link_to employee_path(employee), method: :delete, data: {confirm: 'Are you sure? '} do %> 
 					        		<i class="fa fa-trash icon-color-size" data-toggle="tooltip" data-placement="top" title="Delete"></i>
 					        	<% end %></td>
 						    	</tr>

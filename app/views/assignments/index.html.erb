@@ -38,7 +38,7 @@
 					        	<%= link_to edit_assignment_path(assignment) do %> 
 					        		<i class="fa fa-edit icon-color-size" data-toggle="tooltip" data-placement="top" title="Edit"></i>&nbsp;&nbsp;&nbsp;
 					        	<% end %>
-					        	<%= link_to assignment_path(assignment), method: :delete do %> 
+					        	<%= link_to assignment_path(assignment), method: :delete, data: {confirm: 'Are you sure? '} do %> 
 					        		<i class="fa fa-trash icon-color-size" data-toggle="tooltip" data-placement="top" title="Delete"></i>
 					        	<% end %>
 					        	<%#= link_to "Edit",edit_assignment_path(assignment), class: "btn btn-success"%>
