@@ -1,2 +1,20 @@
-<h1>Assignments#edit</h1>
-<p>Find me in app/views/assignments/edit.html.erb</p>
+<%#= javascript_include_tag "assignments"  %>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-body">
+				<h4 class="card-title">New Assignment</h4>
+				<%= form_for @assignment,class: "form" do |f| %>
+					<%= render "form", f: f %>
+					<%= f.submit "Update", id: "employee_submit", class: "btn btn-success waves-effect waves-light m-r-10" %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(document).on('ready',function(){
+		// assignments.form.formValidation();
+	});
+</script>

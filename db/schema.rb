@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_05_101606) do
+ActiveRecord::Schema.define(version: 2018_10_08_072134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,13 +18,16 @@ ActiveRecord::Schema.define(version: 2018_10_05_101606) do
   create_table "assignments", force: :cascade do |t|
     t.date "start_date"
     t.date "end_date"
-    t.bigint "employee_id"
     t.bigint "project_id"
     t.boolean "is_primary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["employee_id"], name: "index_assignments_on_employee_id"
     t.index ["project_id"], name: "index_assignments_on_project_id"
+  end
+
+  create_table "assignments_employees", id: false, force: :cascade do |t|
+    t.bigint "assignment_id", null: false
+    t.bigint "employee_id", null: false
   end
 
   create_table "clients", force: :cascade do |t|
@@ -95,7 +98,6 @@ ActiveRecord::Schema.define(version: 2018_10_05_101606) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "assignments", "employees"
   add_foreign_key "assignments", "projects"
   add_foreign_key "projects", "employees"
 end
