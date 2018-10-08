@@ -16,3 +16,7 @@
  *= require_tree .
  *= require_self
  */
+
+.breadcrumb-font{
+	font-size: 15px;
+}
