@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title"><%= @technology.new_record? ? 'New' : 'Update '%> Technology</h4>
+        <h6 class="card-subtitle"><%= @technology.new_record? ? 'Add new Technology' : 'Update technology Information'%> </h6>
+        <form class="form">
+          <div class="form-group m-t-40 row">
+            <%= f.label :name, class: 'col-2 col-form-label' %>
+            <div class="col-10">
+              <%= f.text_field :name, class: 'form-control'%>
+            </div>
+          </div>
+          <div class="form-group row">
+            <%= f.submit @technology.new_record? ? 'Create' : 'update', class: 'btn btn-success d-none d-lg-block m-l-15'%>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

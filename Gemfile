@@ -40,6 +40,7 @@ gem "font-awesome-rails"
 gem 'simple-line-icons-rails'
 gem 'themify-icons-rails' , github: 'scratch-soft/themify-icons-rails'
 gem 'bootstrap-sass', '~> 3.3.7'
+gem 'waves-js-rails'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

@@ -19,13 +19,9 @@
             </form>
         </li>
       </ul>
-      <ul class="navbar-nav my-lg-0">
         <!-- User profile and search -->
-        <!-- <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="http://www.wrappixel.com/demos/admin-templates/elegant-admin/assets/images/users/1.jpg" alt="user" class="img-circle" width="30">
-          </a> -->
-
+      <!-- <ul class="navbar-nav my-lg-0">
+        <li class="nav-item dropdown">
           <li> 
             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="hide-menu">
               <img src="http://www.wrappixel.com/demos/admin-templates/elegant-admin/assets/images/users/1.jpg" alt="user" class="img-circle" width="30"></span>
@@ -71,9 +67,32 @@
               <div class="p-l-30 p-10"><a href="javascript:void(0)" class="btn btn-sm btn-success btn-rounded">View Profile</a></div>
           </div>
         </li>
+      </ul> -->
         <!-- User profile and search -->
-          
-      </ul>
+      <li><%= link_to destroy_employee_session_path, class: 'dropdown-item', method: :delete do %>
+        <i class="fa fa-power-off m-r-5 m-l-5"></i> Logout
+      <% end %></li>
+      <ul class="navbar-nav my-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <div class="avatar-circle">
+            <span class="initials"><%= current_employee.username[0].upcase%></span>
+          </div></a>
+            <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
+                <span class="with-arrow"><span class="bg-primary"></span></span>
+                <div class="d-flex no-block align-items-center p-15 bg-primary text-white m-b-10">
+                    <div class="m-l-10">
+                        <h4 class="m-b-0"><%= current_employee.username %></h4>
+                        <p class=" m-b-0"><%= current_employee.email %></p>
+                    </div>
+                </div>
+                <%#= link_to show_path, class: "dropdown-item" do%><i class="fa fa-user-circle m-r-5 m-l-5"></i> My Profile<%#end%>
+                <%#= link_to destroy_user_session_path,class: "dropdown-item", method: :delete do %><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout <%#end%>
+            </div>
+          </li>
+        </ul>
+
+
     </div>
   </nav>
 </header>
