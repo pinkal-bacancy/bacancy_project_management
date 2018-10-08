@@ -14,3 +14,23 @@
   font-size: 28px;
   line-height: 44px;
 }
+
+.bg-grey{
+  background-color: grey;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: grey !important;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  cursor: default;
+  float: left;
+  margin-right: 5px;
+  margin-top: 5px;
+  padding: 0 5px
+}
+
+.icon-color-size{
+  font-size:20px !important;
+  color: black;
+}

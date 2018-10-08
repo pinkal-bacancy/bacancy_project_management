@@ -16,7 +16,7 @@
 								<tr>
 					        <td><%= technology&.name %></td>
 					        <td><%= link_to "Edit",edit_technology_path(technology), class: "btn btn-primary"%></td>
-					        <td><%= button_to "Delete", technology, method: :delete, class: "btn btn-danger", data:{ confirm: 'Are you sure you want to delete this?' } %></td>
+					        <td><%= link_to "Delete", technology, method: :delete, class: "btn btn-danger", data:{ confirm: 'Are you sure you want to delete this?' } %></td>
 					    	</tr>
 							<% end %>
 						</tbody>
