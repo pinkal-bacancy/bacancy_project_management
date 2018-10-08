@@ -12,6 +12,8 @@
 //
 //= require email-decode.min
 //= require jquery-3.2.1.min
+//= require jquery
+//= require jquery_ujs
 //= require popper.min
 //= require bootstrap.min
 //= require perfect-scrollbar.jquery.min
@@ -22,7 +24,6 @@
 //= require moment
 //= require rails-ujs
 //= require activestorage
-//= require jquery
 //= require turbolinks
 //= require cable
 //= require jquery.validate.min
@@ -32,7 +33,6 @@
 //= require toastr.js
 //= require material-datetimepicker
 //= require datepicker
-//= require_tree .
 
 toastr.options = {
   "closeButton": true,

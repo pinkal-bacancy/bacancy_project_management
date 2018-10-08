@@ -3,6 +3,7 @@
 # technology controller
 class TechnologiesController < ApplicationController
   before_action :find_technology, only: %i[edit update destroy show]
+  before_action :breadcrumb_path, only: %i[new show]
 
   def new
     @technology = Technology.new
@@ -18,6 +19,8 @@ class TechnologiesController < ApplicationController
   end
 
   def index
+    add_breadcrumb "Home", root_path
+    add_breadcrumb "Technologies", technologies_path
     @technologies = Technology.all
   end
 
@@ -37,6 +40,12 @@ class TechnologiesController < ApplicationController
   end
 
   private
+
+  def breadcrumb_path
+    add_breadcrumb "Home", root_path
+    add_breadcrumb "Technologies", technologies_path
+    add_breadcrumb "Add Technology", new_technology_path
+  end
 
   def find_technology
     @technology = Technology.find(params[:id])

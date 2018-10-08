@@ -3,6 +3,7 @@
 # client controller
 class ClientsController < ApplicationController
   before_action :find_client, only: %i[edit update destroy show]
+  before_action :breadcrumb_path, only: %i[new show]
 
   def new
     @client = Client.new
@@ -18,6 +19,8 @@ class ClientsController < ApplicationController
   end
 
   def index
+    add_breadcrumb "Home", root_path
+    add_breadcrumb "Clients", clients_path
     @clients = Client.all
   end
 
@@ -43,6 +46,12 @@ class ClientsController < ApplicationController
   end
 
   private
+
+  def breadcrumb_path
+    add_breadcrumb "Home", root_path
+    add_breadcrumb "Clients", clients_path
+    add_breadcrumb "Add Client", new_client_path
+  end
 
   def find_client
     @client = Client.find(params[:id])

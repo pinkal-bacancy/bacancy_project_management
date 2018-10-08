@@ -3,6 +3,7 @@
 # employee controller
 class EmployeesController < ApplicationController
   before_action :find_employee, only: %i[edit update destroy show change_role]
+  before_action :breadcrumb_path, only: %i[new show]
 
   def new
     @employee = Employee.new
@@ -21,6 +22,8 @@ class EmployeesController < ApplicationController
   end
 
   def index
+    add_breadcrumb 'Employees', employees_path
+    add_breadcrumb 'Home', root_path
     @employees = Employee.all
     @roles = Role.all
   end
@@ -59,6 +62,12 @@ class EmployeesController < ApplicationController
   def show; end
 
   private
+
+  def breadcrumb_path
+    add_breadcrumb "Home", root_path
+    add_breadcrumb "Employees", employees_path, :title => "Back to the Index"
+    add_breadcrumb "Add Employee", new_employee_path, :title => "Back to the Index"
+  end
 
   def find_employee
     @employee = Employee.find(params[:id]) rescue nil
