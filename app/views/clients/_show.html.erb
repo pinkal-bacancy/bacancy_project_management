@@ -1,13 +1,16 @@
+<div class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 <div class="modal-dialog">
    <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header" >
+         <h4 class="modal-title">Client detail</h4>
          <button type="button" class="close" data-dismiss="modal">&times;</button>
-         <h4 class="modal-title">Technical Test Answer</h4>
       </div>
       <div class="modal-body">
-         
-      </div>
+         Email: <%= client&.client_email %><br>
+         Country: <%= client&.country%>
+      </div>   
    </div>
+</div>
 </div>
 <script type="text/javascript">
    $(".close").click(function(){

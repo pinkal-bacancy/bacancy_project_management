@@ -5,8 +5,10 @@
       <button type="button" class="close" data-dismiss="modal">&times;</button>
     </div>
     <div class="modal-body">
-    	Name: <%= project&.project_name %><br>
-    	Client: <%= project&.client&.name%>
+    	Name: <%= employee&.first_name %><%= employee&.last_name %><br>
+    	Email: <%= employee&.email %><br>
+    	Technology: <%= employee&.primary_technology %><br>
+      Role: <%= employee&.roles&.first&.name %>
     </div>
   </div>
 </div>
@@ -15,4 +17,3 @@
     $(".modal").hide();
   });
 </script>
-

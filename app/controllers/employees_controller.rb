@@ -59,7 +59,8 @@ class EmployeesController < ApplicationController
     redirect_to employees_path
   end
 
-  def show; end
+  def show
+  end
 
   private
 
