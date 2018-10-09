@@ -16,6 +16,7 @@
             <%= f.label :email, class: 'col-2 col-form-label' %>
             <div class="col-10">
               <%= f.email_field :client_email, class: 'form-control'%>
+              <span id="unique_client_email" style="display: none;">Email has already been taken.</span>
             </div>
           </div>
 
@@ -34,7 +35,7 @@
           </div>
           
           <div class="form-group row">
-            <%= f.submit @client.new_record? ? 'Create' : 'update', class: 'btn btn-success d-none d-lg-block m-l-15'%>
+            <%= f.submit @client.new_record? ? 'Create' : 'update', class: 'btn btn-success d-none d-lg-block m-l-15', id: 'client_submit'%>
           </div>
         </form>
       </div>

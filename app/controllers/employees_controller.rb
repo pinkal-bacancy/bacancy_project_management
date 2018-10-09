@@ -22,8 +22,8 @@ class EmployeesController < ApplicationController
   end
 
   def index
-    add_breadcrumb 'Employees', employees_path
     add_breadcrumb 'Home', root_path
+    add_breadcrumb 'Employees', employees_path
     @employees = Employee.all
     @roles = Role.all
   end

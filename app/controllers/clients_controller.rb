@@ -19,8 +19,8 @@ class ClientsController < ApplicationController
   end
 
   def index
-    add_breadcrumb "Home", root_path
-    add_breadcrumb "Clients", clients_path
+    add_breadcrumb 'Home', root_path
+    add_breadcrumb 'Clients', clients_path
     @clients = Client.all
   end
 
@@ -45,12 +45,16 @@ class ClientsController < ApplicationController
     redirect_to clients_path
   end
 
+  def unique_client_email
+    @client = Client.find_by(client_email: params[:email])
+  end
+
   private
 
   def breadcrumb_path
-    add_breadcrumb "Home", root_path
-    add_breadcrumb "Clients", clients_path
-    add_breadcrumb "Add Client", new_client_path
+    add_breadcrumb 'Home', root_path
+    add_breadcrumb 'Clients', clients_path
+    add_breadcrumb 'Add Client', new_client_path
   end
 
   def find_client
