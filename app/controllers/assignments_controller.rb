@@ -4,32 +4,32 @@
 class AssignmentsController < ApplicationController
   before_action :find_assignment, only: %i[edit update destroy show]
   def new
-  	@assignment = Assignment.new
+    @assignment = Assignment.new
   end
 
   def create
-  	@assignment = Assignment.new(assignment_params)
-  	if @assignment.save
-  		params[:assignment][:employee_ids].each do |employee|
-  			@employee = Employee.find(employee) rescue nil
-  			@assignment.employees << @employee if @employee.present?
-  		end
-  		redirect_to assignments_path
-  	else
-  		render 'new'
-  	end
+    @assignment = Assignment.new(assignment_params)
+    if @assignment.save
+      params[:assignment][:employee_ids].each do |employee|
+        @employee = Employee.find(employee) rescue nil
+        @assignment.employees << @employee if @employee.present?
+      end
+      redirect_to assignments_path
+    else
+      render 'new'
+    end
   end
 
   def index
-  	@assignments = Assignment.all
+    @assignments = Assignment.all
   end
 
   def edit; end
 
   def update
     if @assignment.update(assignment_params)
-      #delete all employees and then add 
-      @assignment&.employees.delete_all 
+      # delete all employees and then add
+      @assignment&.employees.delete_all
       params[:assignment][:employee_ids].each do |employee|
         @employee = Employee.find(employee) rescue nil
         @assignment.employees << @employee if @employee.present?
@@ -41,18 +41,19 @@ class AssignmentsController < ApplicationController
   end
 
   def destroy
-    
+    @assignment.destroy
+    redirect_to assignments_path
   end
 
   def show; end
 
-  private 
-  
+  private
+
   def find_assignment
     @assignment = Assignment.find(params[:id]) rescue nil
   end
 
-  def assignment_params 
-  	params.require(:assignment).permit(:start_date, :end_date, :project_id)
+  def assignment_params
+    params.require(:assignment).permit(:start_date, :end_date, :project_id)
   end
 end
