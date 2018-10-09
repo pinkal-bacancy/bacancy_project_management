@@ -6,5 +6,16 @@
 <script type="text/javascript">
 	$(document).on('ready',function(){
 		Clients.form.formValidation();
+		//ajax call to check unique email validation
+		$("#client_client_email").on("change", function(){
+			$.ajax({
+         url: '/unique_client_email.js',
+         method: 'GET',
+         data: {
+           email: $(this).val(),
+           username: $("#client_email").val()
+         }
+       });
+		});
 	});
 </script>

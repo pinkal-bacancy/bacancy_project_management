@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "/unique_employee" => "employees#unique_employee"
   get "/unique_username" => "employees#unique_username"
   get "/change_role" => "employees#change_role"
+  get "/unique_client_email" => "clients#unique_client_email"
   resources :projects
   resources :assignments
   resources :clients

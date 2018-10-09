@@ -1,0 +1,7 @@
+<% if !@client.present? %>
+	$("#unique_client_email").hide();
+	$("#client_submit").attr("disabled",false);
+<% else %>
+	$("#client_submit").attr("disabled",true);
+	$("#unique_client_email").show();
+<% end %>
