@@ -51,9 +51,6 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    respond_to do |format|
-        format.js
-    end
   end
 
   private
