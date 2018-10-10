@@ -60,13 +60,14 @@
             <li><%= link_to 'New Technology', new_technology_path %></li>
           </ul>
         </li>
+
         <li>
           <%= link_to '', class: 'has-arrow waves-effect waves-dark' do %>
-            <i class="fa fa-user-circle-o"></i><span class="hide-menu">Client</span>
+            <i class="fa fa-th-large"></i><span class="hide-menu">Leave</span>
           <% end %>
           <ul aria-expanded="false" class="collapse">
-            <li><%= link_to 'Client List', clients_path %></li>
-            <li><%= link_to 'New Client', new_client_path %></li>
+            <li><%= link_to 'Leave List', leave_lists_path %></li>
+            <li><%= link_to 'New Leave', new_leave_list_path %></li>
           </ul>
         </li>
 
