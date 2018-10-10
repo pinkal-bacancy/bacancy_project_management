@@ -21,7 +21,11 @@ class ClientsController < ApplicationController
   def index
     add_breadcrumb 'Home', root_path
     add_breadcrumb 'Clients', clients_path
-    @clients = Client.all
+    @filterrific = initialize_filterrific(
+      Client,
+      params[:filterrific]
+    ) or return
+    @clients = @filterrific.find.page(params[:page])
   end
 
   def edit; end

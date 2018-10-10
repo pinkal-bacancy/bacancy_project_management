@@ -22,10 +22,19 @@ class EmployeesController < ApplicationController
   end
 
   def index
+    @filterrific = initialize_filterrific(
+      Employee,
+      params[:filterrific]
+    ) or return
+    @employees = @filterrific.find.page(params[:page])
     add_breadcrumb 'Home', root_path
     add_breadcrumb 'Employees', employees_path
-    @employees = Employee.all
+   # @employees = Employee.all
     @roles = Role.all
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def edit; end
@@ -76,7 +85,7 @@ class EmployeesController < ApplicationController
 
   def employee_params
     params.require(:employee).permit(:first_name, :last_name,
-                                     :username, :primary_technology,
+                                     :username, :technology_id,
                                      :secondary_technology, :email)
   end
 end

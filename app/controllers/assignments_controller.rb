@@ -21,7 +21,12 @@ class AssignmentsController < ApplicationController
   end
 
   def index
-    @assignments = Assignment.all
+    @filterrific = initialize_filterrific(
+      Assignment,
+      params[:filterrific]
+    ) or return
+
+    @assignments = @filterrific.find.page(params[:page]) rescue nil
   end
 
   def edit; end

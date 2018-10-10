@@ -17,4 +17,13 @@ module ApplicationHelper
 	def total_project_count
 		@projects = Project.count
 	end
+
+	def employee_with_role_pm
+		@pm = []
+		Employee.all.each do |employee|
+			@pm << employee if employee.has_role? "PM"
+		end
+		return @pm
+	end
+
 end

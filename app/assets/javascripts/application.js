@@ -33,6 +33,7 @@
 //= require toastr.js
 //= require material-datetimepicker
 //= require datepicker
+//= require filterrific/filterrific-jquery
 
 toastr.options = {
   "closeButton": true,
