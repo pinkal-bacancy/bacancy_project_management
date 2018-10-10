@@ -30,10 +30,12 @@
 //= require jquery.validate
 //= require activestorage
 //= require datatable.min
-//= require toastr.js
+//= require toastr
 //= require material-datetimepicker
 //= require datepicker
 //= require filterrific/filterrific-jquery
+//= require Chart.bundle
+//= require chartkick
 
 toastr.options = {
   "closeButton": true,

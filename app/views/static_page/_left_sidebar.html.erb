@@ -76,18 +76,6 @@
             <%= link_to '', class: 'has-arrow waves-effect waves-dark' do %>
               <span class="hide-menu">Profile<%#= current_employee&.username[0]&.upcase%></span>
             <% end %>
-            <ul aria-expanded="false" class="collapse">
-              <li>
-                <%= link_to "" do %>
-                  <i class="fa fa-users"></i><span class="hide-menu">My Profile</span>
-                <% end %>
-              </li>
-              <li>
-                <a><%= button_to destroy_employee_session_path, class: 'dropdown-item', method: :delete  do %>
-                  <i class="fa fa-user-plus"></i><span class="hide-menu">Logout</span>
-                <% end %></a>
-              </li>
-            </ul>
           </li>
          
           <% end %>

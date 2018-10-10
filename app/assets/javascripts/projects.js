@@ -13,9 +13,10 @@ Projects = {
     //     return this.optional(element) || /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/.test(value);
     //     }, 'Please enter a valid Phone number.');
 
-    //   $.validator.addMethod('costValid', function(value, element){
-    //     return this.optional(element) || /^(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?$/.test(value);
-    //     }, 'Please enter a valid cost.');
+      $.validator.addMethod('costValid', function(value, element){
+        return this.optional(element) || /^[0-9?=.*!@#$%^&*]+$/.test(value);
+        }, 'Please enter a valid Budget.');
+
       $('.new_project').validate({
         rules: {
           'project[project_name]': {required: true},
@@ -23,7 +24,8 @@ Projects = {
           'project[end_date]': {required: true},
           'project[employee_id]': {required: true},
           'project[client_id]': {required: true},
-          'employee[secondary_technology]': {required: true}
+          // 'project[budget]':{required: true, costValid: true},
+          'project[technology_ids][]': {required: true}
         }
 
 			});
@@ -34,11 +36,10 @@ Projects = {
           'project[end_date]': {required: true},
           'project[employee_id]': {required: true},
           'project[client_id]': {required: true},
-          'employee[secondary_technology]': {required: true}
+          'project[technology_ids][]': {required: true}
         }
 
       });
-			// code here
 		}
 	}
 }

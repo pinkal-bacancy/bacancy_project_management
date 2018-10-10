@@ -11,10 +11,10 @@ class EmployeesController < ApplicationController
 
   def create
     @employee = Employee.new(employee_params)
-    password = SecureRandom.hex(8)
+    password = SecureRandom.hex(8) #logic for autho generate pass
     @employee.password = password
     if @employee.save
-      EmployeeMailer.employee_send_password_email(@employee).deliver_now
+      # EmployeeMailer.employee_send_password_email(@employee).deliver_now
       redirect_to employees_path
     else
       render 'new'
@@ -86,6 +86,6 @@ class EmployeesController < ApplicationController
   def employee_params
     params.require(:employee).permit(:first_name, :last_name,
                                      :username, :technology_id,
-                                     :secondary_technology, :email)
+                                     :secondary_technology, :email, :is_primary)
   end
 end

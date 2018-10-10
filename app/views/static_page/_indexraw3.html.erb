@@ -88,111 +88,37 @@
     <!-- column -->
   </div>
   <!-- column -->
+  <!-- employee working in more than one project section start -->
   <div class="col-lg-6">
-      <div class="card">
-          <div class="card-body">
-              <div class="d-flex">
-                  <div>
-                      <h5 class="card-title">Sales Overview</h5>
-                      <h6 class="card-subtitle">Check the monthly sales </h6>
-                  </div>
-                  <div class="ml-auto">
-                      <select class="custom-select b-0">
-                          <option>January</option>
-                          <option value="1">February</option>
-                          <option value="2" selected="">March</option>
-                          <option value="3">April</option>
-                      </select>
-                  </div>
-              </div>
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex">
+          <div>
+            <h5 class="card-title">Employees</h5>
+            <h6 class="card-subtitle">Employees working in more than one project.</h6>
           </div>
-          <div class="card-body bg-light">
-              <div class="row">
-                  <div class="col-6">
-                      <h3>March 2017</h3>
-                      <h5 class="font-light m-t-0">Report for this month</h5></div>
-                  <div class="col-6 align-self-center display-6 text-right">
-                      <h2 class="text-success">$3,690</h2></div>
-              </div>
-          </div>
-          <div class="table-responsive">
-              <table class="table table-hover">
-                  <thead>
-                      <tr>
-                          <th class="text-center">#</th>
-                          <th>NAME</th>
-                          <th>STATUS</th>
-                          <th>DATE</th>
-                          <th>PRICE</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                          <td class="text-center">1</td>
-                          <td class="txt-oflo">Elite admin</td>
-                          <td><span class="badge badge-success badge-pill">sale</span> </td>
-                          <td class="txt-oflo">April 18, 2017</td>
-                          <td><span class="text-success">$24</span></td>
-                      </tr>
-                      <tr>
-                          <td class="text-center">2</td>
-                          <td class="txt-oflo">Real Homes WP Theme</td>
-                          <td><span class="badge badge-info badge-pill">extended</span></td>
-                          <td class="txt-oflo">April 19, 2017</td>
-                          <td><span class="text-info">$1250</span></td>
-                      </tr>
-                      <tr>
-                          <td class="text-center">3</td>
-                          <td class="txt-oflo">Ample Admin</td>
-                          <td><span class="badge badge-info badge-pill">extended</span></td>
-                          <td class="txt-oflo">April 19, 2017</td>
-                          <td><span class="text-info">$1250</span></td>
-                      </tr>
-                      <tr>
-                          <td class="text-center">4</td>
-                          <td class="txt-oflo">Medical Pro WP Theme</td>
-                          <td><span class="badge badge-danger badge-pill">tax</span></td>
-                          <td class="txt-oflo">April 20, 2017</td>
-                          <td><span class="text-danger">-$24</span></td>
-                      </tr>
-                      <tr>
-                          <td class="text-center">5</td>
-                          <td class="txt-oflo">Hosting press html</td>
-                          <td><span class="badge badge-success badge-pill">sale</span></td>
-                          <td class="txt-oflo">April 21, 2017</td>
-                          <td><span class="text-success">$24</span></td>
-                      </tr>
-                      <tr>
-                          <td class="text-center">6</td>
-                          <td class="txt-oflo">Digital Agency PSD</td>
-                          <td><span class="badge badge-success badge-pill">sale</span> </td>
-                          <td class="txt-oflo">April 23, 2017</td>
-                          <td><span class="text-danger">-$14</span></td>
-                      </tr>
-                      <tr>
-                          <td class="text-center">7</td>
-                          <td class="txt-oflo">Helping Hands WP Theme</td>
-                          <td><span class="badge badge-warning badge-pill">member</span></td>
-                          <td class="txt-oflo">April 22, 2017</td>
-                          <td><span class="text-success">$64</span></td>
-                      </tr>
-                      <tr>
-                          <td class="text-center">8</td>
-                          <td class="txt-oflo">Helping Hands WP Theme</td>
-                          <td><span class="badge badge-warning badge-pill">member</span></td>
-                          <td class="txt-oflo">April 22, 2017</td>
-                          <td><span class="text-success">$64</span></td>
-                      </tr>
-                      <tr>
-                          <td class="text-center">9</td>
-                          <td class="txt-oflo">Ample Admin</td>
-                          <td><span class="badge badge-info badge-pill">extended</span></td>
-                          <td class="txt-oflo">April 19, 2017</td>
-                          <td><span class="text-info">$1250</span></td>
-                      </tr>
-                  </tbody>
-              </table>
-          </div>
+        </div>
       </div>
+      <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>NAME</th>
+                <th>PROJECTS</th>
+                <th>TECHNOLOGY</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% find_employee_more_than_one_project.each do |employee| %>
+                <tr>
+                  <td><%= employee&.username %></td>
+                  <td class="txt-oflo"><% employee&.assignments.each do |assignment| %><%= find_project(assignment) %><br><% end %></td>
+                  <td><%= employee&.primary_technology%></td>
+                </tr>
+              <% end %>  
+            </tbody>
+          </table>
+      </div>
+    </div>
   </div>
 </div>

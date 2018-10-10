@@ -3,7 +3,7 @@
 # employee model
 class Employee < ApplicationRecord
   # has_many :assignments
-  has_many :projects, through: :assignments
+  has_many :projects
   has_and_belongs_to_many :assignments
   belongs_to :technology
   filterrific(
@@ -21,3 +21,4 @@ class Employee < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 end
+ 

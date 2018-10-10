@@ -24,6 +24,7 @@ gem "breadcrumbs_on_rails"
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'filterrific'
 gem 'will_paginate', '~> 3.1.0'
+gem "chartkick"
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
