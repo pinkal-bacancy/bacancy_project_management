@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   
+  
   resources :employees,path: 'employee'
   get "/unique_employee" => "employees#unique_employee"
   get "/unique_username" => "employees#unique_username"
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
   resources :assignments
   resources :clients
   resources :technologies
+  resources :leave_lists
   
   devise_for :employees, controllers:
   {

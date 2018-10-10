@@ -7,7 +7,7 @@
     <div class="modal-body">
     	Name: <%= employee&.first_name %><%= employee&.last_name %><br>
     	Email: <%= employee&.email %><br>
-    	Technology: <%= employee&.primary_technology %><br>
+    	Technology: <%= employee&.technology&.name %><br>
       Role: <%= employee&.roles&.first&.name %>
     </div>
   </div>

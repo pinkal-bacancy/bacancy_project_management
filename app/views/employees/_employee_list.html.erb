@@ -1,0 +1,70 @@
+ <div id="filterrific_results">
+ <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Employee List</h4>
+					<div class="table-responsive m-t-40">
+					  <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+					  	<thead>
+						    <tr>
+						        <th>Email</th>
+						        <th>Name</th>
+						        <th>Username</th>
+						        <th>Primary Technology</th>
+						        <th>Secondary Technology</th>
+						        <th>Role</th>
+						        <th>Change Role</th>
+						        <th>Action</th>
+						    </tr>
+							</thead>
+							<tbody>
+								<% employees&.each do |employee| %>
+									<tr>
+						        <td><%= employee&.email %></td>
+						        <td><%= employee&.first_name %> <%= employee&.last_name %></td>
+						        <td><%= employee&.username %></td>
+						        <td><%= employee&.technology&.name %></td>
+						        <td><%= employee&.secondary_technology %></td>
+						        <td id="employee-role-<%= employee&.id%>"><%= employee&.roles&.first&.name %></td>
+						        <td>
+						        		<%= select_tag "role",options_for_select(@roles.map{|role| [role&.name,role&.id]}, selected: employee&.roles&.first&.id),id: "select-#{employee&.id}", data: { value: "#{employee&.id}"} %>
+						        		<%= button_tag "Change Role", class: "btn btn-warning change-employee-role", id: "change_role_btn-#{employee&.id}", data: { value: "#{employee&.id}"}  %>
+						        </td>
+						        <td><%= link_to employee_path(employee),remote: true do %> 
+					        		<i class="fa fa-eye icon-color-size" data-toggle="tooltip" data-placement="top" title="Show"></i>   
+					        	<% end %>
+					        	<%= link_to edit_employee_path(employee) do %> 
+					        		<i class="fa fa-edit icon-color-size" data-toggle="tooltip" data-placement="top" title="Edit"></i>   
+					        	<% end %>
+					        	<%= link_to employee_path(employee), method: :delete, data: {confirm: 'Are you sure? '} do %> 
+					        		<i class="fa fa-trash icon-color-size" data-toggle="tooltip" data-placement="top" title="Delete"></i>
+					        	<% end %></td>
+						    	</tr>
+								<% end %>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<%= will_paginate employees %>
+
+	<div class="modal"></div>
+</div>
+<script type="text/javascript">
+	$(document).on('ready',function(){
+		$(".change-employee-role").on("click", function(){
+			$(this).parent().find('select option:selected').text();
+				$.ajax({
+	         url: '/change_role.js',
+	         method: 'GET',
+	         data: {
+	           role: $("select[data-value='" + $(this).attr('data-value') + "'] option:selected").text(), //$(this).parent().find('select option:selected').text(),
+	           id: $(this).attr('data-value')
+	         }
+	      });
+		});
+	});
+</script>

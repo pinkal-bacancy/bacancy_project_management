@@ -30,7 +30,7 @@
 <div class="form-group m-t-40 row">
 	<%= f.label :primary_technology, class: "col-2 col-form-label" %>
 	<div class="col-10">
-		<%= f.text_field :primary_technology, class: "form-control", placeholder: "Primary Technology"%>
+		<%= f.select :technology_id, Technology.all.collect { |technology| [ technology&.name, technology&.id ] }, {include_blank: "select"}, {class: "select2 form-control custom-select",} %>
 	</div>
 </div>
 

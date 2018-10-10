@@ -1,73 +1,56 @@
 <%= javascript_include_tag "rails" %>
+  <%#
+  Filterrific adds the `form_for_filterrific` view helper:
+  * adds dom id 'filterrific_filter'
+  * applies javascript behaviors:
+      * AJAX form submission on change
+      * AJAX spinner while AJAX request is being processed
+  * sets form_for options like :url, :method and input name prefix
+%>
+<%= form_for_filterrific @filterrific, html: { id: 'filterrific-no-ajax-auto-submit' } do |f| %>
   <div class="row">
-    <div class="col-12">
+    <div class="col-lg-3">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Employee List</h4>
-					<div class="table-responsive m-t-40">
-						<div id="myTable" class="dataTables_wrapper no-footer">
-					  <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
-					  	<thead>
-						    <tr>
-						        <th>Email</th>
-						        <th>Name</th>
-						        <th>Username</th>
-						        <th>Primary Technology</th>
-						        <th>Secondary Technology</th>
-						        <th>Is Primary</th>
-						        <th>Role</th>
-						        <th>Change Role</th>
-						        <th>Action</th>
-						    </tr>
-							</thead>
-							<tbody>
-								<% @employees&.each do |employee| %>
-									<tr>
-						        <td><%= employee&.email %></td>
-						        <td><%= employee&.first_name %> <%= employee&.last_name %></td>
-						        <td><%= employee&.username %></td>
-						        <td><%= employee&.primary_technology %></td>
-						        <td><%= employee&.secondary_technology %></td>
-						        <td>
-						        	<%= employee&.is_primary.present? ? 'Yes' : 'No' %>
-						        </td>
-						        <td id="employee-role-<%= employee&.id%>"><%= employee&.roles&.first&.name %></td>
-						        <td>
-						        		<%= select_tag "role",options_for_select(@roles.map{|role| [role&.name,role&.id]}, selected: employee&.roles&.first&.id),id: "select-#{employee&.id}", data: { value: "#{employee&.id}"} %>
-						        		<%= button_tag "Change Role", class: "btn btn-warning change-employee-role", id: "change_role_btn-#{employee&.id}", data: { value: "#{employee&.id}"}  %>
-						        </td>
-						        <td><%= link_to employee_path(employee),remote: true do %> 
-					        		<i class="fa fa-eye icon-color-size" data-toggle="tooltip" data-placement="top" title="Show"></i>   
-					        	<% end %>
-					        	<%= link_to edit_employee_path(employee) do %> 
-					        		<i class="fa fa-edit icon-color-size" data-toggle="tooltip" data-placement="top" title="Edit"></i>   
-					        	<% end %>
-					        	<%= link_to employee_path(employee), method: :delete, data: {confirm: 'Are you sure? '} do %> 
-					        		<i class="fa fa-trash icon-color-size" data-toggle="tooltip" data-placement="top" title="Delete"></i>
-					        	<% end %></td>
-						    	</tr>
-								<% end %>
-							</tbody>
-						</table>
-					</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="modal"></div>
-<script type="text/javascript">
-	$(document).on('ready',function(){
-		$(".change-employee-role").on("click", function(){
-			$(this).parent().find('select option:selected').text();
-				$.ajax({
-	         url: '/change_role.js',
-	         method: 'GET',
-	         data: {
-	           role: $("select[data-value='" + $(this).attr('data-value') + "'] option:selected").text(), //$(this).parent().find('select option:selected').text(),
-	           id: $(this).attr('data-value')
-	         }
-	      });
-		});
-	});
-</script>
+          Email
+          <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+          <%= f.text_field(
+            :search_by_email,
+            class: 'filterrific-periodically-observed'
+          ) %>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="card">
+        <div class="card-body">
+          Primary Technology
+          <%= f.select :with_primary_technology, Technology.all.collect { |p| [ p.name, p.id ] }, {include_blank: "select"}, {class: "select2 form-control custom-select"} %>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="card">
+        <div class="card-body">
+          <%= link_to(
+            'Reset filters',
+            reset_filterrific_url,
+          ) %>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="card">
+        <div class="card-body">  
+    <%# add an automated spinner to your form when the list is refreshed %>
+          <%= render_filterrific_spinner %>
+          <%= f.submit 'Filter' %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= render partial: 'employees/employee_list', locals: { employees: @employees }
+ %>
+ 

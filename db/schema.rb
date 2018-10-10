@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2018_10_09_064208) do
 
   # These are extensions that must be enabled in order to support this database
@@ -48,12 +49,13 @@ ActiveRecord::Schema.define(version: 2018_10_09_064208) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
-    t.text "primary_technology"
     t.text "secondary_technology"
     t.string "username"
+    t.bigint "technology_id"
     t.boolean "is_primary"
     t.index ["email"], name: "index_employees_on_email", unique: true
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
+    t.index ["technology_id"], name: "index_employees_on_technology_id"
   end
 
   create_table "employees_roles", id: false, force: :cascade do |t|
@@ -62,6 +64,17 @@ ActiveRecord::Schema.define(version: 2018_10_09_064208) do
     t.index ["employee_id", "role_id"], name: "index_employees_roles_on_employee_id_and_role_id"
     t.index ["employee_id"], name: "index_employees_roles_on_employee_id"
     t.index ["role_id"], name: "index_employees_roles_on_role_id"
+  end
+
+  create_table "leave_lists", force: :cascade do |t|
+    t.bigint "employee_id"
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_leave_lists_on_employee_id"
+    t.index ["project_id"], name: "index_leave_lists_on_project_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -100,5 +113,8 @@ ActiveRecord::Schema.define(version: 2018_10_09_064208) do
   end
 
   add_foreign_key "assignments", "projects"
+  add_foreign_key "employees", "technologies"
+  add_foreign_key "leave_lists", "employees"
+  add_foreign_key "leave_lists", "projects"
   add_foreign_key "projects", "employees"
 end

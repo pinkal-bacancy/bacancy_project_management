@@ -1,58 +1,61 @@
 <%= javascript_include_tag "rails" %>
-<div class="row">
-  <div class="col-12">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Project wise Employee List</h4>
-				<div class="table-responsive m-t-40">
-				  <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
-				  	<thead>
-					    <tr>
-				        <th>Project</th>
-				        <th>Start Date</th>
-				        <th>End Date</th>
-				        <th>Employees</th>
-				        <th>Client</th>
-				        <th>Technologies</th>
-				        <th>Action</th>
-					    </tr>
-						</thead>
-						<tbody>
-							<% @assignments&.each do |assignment| %>
-								<tr>
-					        <td><%= assignment&.project&.project_name %></td>
-					        <td><%= assignment&.start_date %></td>
-					        <td><%= assignment&.end_date %></td>
-					        <td><% assignment&.employees.each do |employee| %>
-					        	<span class="label bg-orange"><%= employee&.username %></span><br>
-					        	<% end %>
-					        </td>
-					        <td><%= assignment&.project&.client&.client_name %></td>
-					        <td><% assignment&.project.technologies.each do |technology| %>
-					        	<span class="label label-inverse"><%= technology&.name %></span><br>
-					        	<% end %>
-					        </td>
-					        <td>
-					        	<%= link_to assignment_path(assignment),remote: true do %> 
-					        		<i class="fa fa-eye icon-color-size" data-toggle="tooltip" data-placement="top" title="Show"></i>&nbsp;&nbsp;&nbsp;
-					        	<% end %>
-					        	<%= link_to edit_assignment_path(assignment) do %> 
-					        		<i class="fa fa-edit icon-color-size" data-toggle="tooltip" data-placement="top" title="Edit"></i>&nbsp;&nbsp;&nbsp;
-					        	<% end %>
-					        	<%= link_to assignment_path(assignment), method: :delete, data: {confirm: 'Are you sure? '} do %> 
-					        		<i class="fa fa-trash icon-color-size" data-toggle="tooltip" data-placement="top" title="Delete"></i>
-					        	<% end %>
-					        	<%#= link_to "Edit",edit_assignment_path(assignment), class: "btn btn-success"%>
-					        	<%#= button_to "Delete", assignment, method: :delete,  class: "btn btn-danger",data: { confirm: 'Are you sure you want to delete this?' } %>
-					        </td>
-					    	</tr>
-							<% end %>
-						</tbody>
-					</table>
+  <%#
+  Filterrific adds the `form_for_filterrific` view helper:
+  * adds dom id 'filterrific_filter'
+  * applies javascript behaviors:
+      * AJAX form submission on change
+      * AJAX spinner while AJAX request is being processed
+  * sets form_for options like :url, :method and input name prefix
+%>
+<%= form_for_filterrific @filterrific, html: { id: 'filterrific-no-ajax-auto-submit' } do |f| %>
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="card">
+        <div class="card-body">
+		      Employee
+		      <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+		      <%= f.select :search_by_employee, Employee.all.collect { |p| [ p.username, p.id ] }, {include_blank: "select"}, {class: "select2 form-control custom-select"} %>
+		    </div>
+		  </div>
+		</div>
+
+		<div class="col-lg-3">
+      <div class="card">
+        <div class="card-body">
+		      Technology
+		      <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+		      <%= f.select :search_assignment_by_technology, Technology.all.collect { |p| [ p.name, p.id ] }, {include_blank: "select"}, {class: "select2 form-control custom-select"} %>
+		    </div>
+		  </div>
+		</div>
+
+		<div class="col-lg-3">
+      <div class="card">
+        <div class="card-body">
+		      Client
+		      <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+		      <%= f.select :search_assignment_by_client, Client.all.collect { |client| [ client&.client_name, client&.id ] }, {include_blank: "select"}, {class: "select2 form-control custom-select"} %>
+		    </div>
+		  </div>
+		</div>
+    
+    <div class="col-lg-3">
+      <div class="card">
+        <div class="card-body">
+		      <%= link_to(
+		        'Reset filters',
+		        reset_filterrific_url,
+		      ) %>
+		     
+				  <%# add an automated spinner to your form when the list is refreshed %>
+				  <%= render_filterrific_spinner %>
+				  <%= f.submit 'Filter' %>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+<% end %>
 
-<div class="modal"></div>
+<%= render partial: 'assignments/assignment_list', locals: { assignments: @assignments }
+ %>
+ 

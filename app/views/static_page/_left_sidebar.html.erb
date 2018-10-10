@@ -60,6 +60,15 @@
             <li><%= link_to 'New Technology', new_technology_path %></li>
           </ul>
         </li>
+        <li>
+          <%= link_to '', class: 'has-arrow waves-effect waves-dark' do %>
+            <i class="fa fa-user-circle-o"></i><span class="hide-menu">Client</span>
+          <% end %>
+          <ul aria-expanded="false" class="collapse">
+            <li><%= link_to 'Client List', clients_path %></li>
+            <li><%= link_to 'New Client', new_client_path %></li>
+          </ul>
+        </li>
 
 
         <% if employee_signed_in? %>  

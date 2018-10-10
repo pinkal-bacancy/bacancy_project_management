@@ -1,0 +1,55 @@
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Project List</h4>
+					<div class="table-responsive m-t-40">
+					  <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+					  	<thead>
+						    <tr>
+						        <th>Project Name</th>
+						        <th>Start Date</th>
+						        <th>End Date</th>
+						        <th>Rough Order Magnitude</th>
+						        <th>PM</th>
+						        <th>Client</th>
+						        <th>Technologies</th>
+						        <th colspan="3">Action</th>
+						        
+						    </tr>
+							</thead>
+							<tbody>
+								<% projects&.each do |project| %>
+									<tr>
+						        <td><%= project&.project_name %></td>
+						        <td><%= project&.start_date %></td>
+						        <td><%= project&.end_date %></td>
+						        <td><%= project&.rough_order_magnitude %></td>
+						        <td><%= find_employee(project) %></td>
+						        <td><%= project&.client&.client_name %></td>
+						        <!-- label label-info -->
+						        <td><% project&.technologies.each do |technology| %>
+						        	<span class="label label-inverse"><%= technology&.name%></span><br>
+						        	<% end %>
+						        </td>
+						        <td><%= link_to project_path(project),remote: true do %> 
+					        		<i class="fa fa-eye icon-color-size" data-toggle="tooltip" data-placement="top" title="Show"></i>   
+					        	<% end %>
+					        	<%= link_to edit_project_path(project) do %> 
+					        		<i class="fa fa-edit icon-color-size" data-toggle="tooltip" data-placement="top" title="Edit"></i>   
+					        	<% end %>
+					        	<%= link_to project_path(project), method: :delete, data: {confirm: 'Are you sure? '} do %> 
+					        		<i class="fa fa-trash icon-color-size" data-toggle="tooltip" data-placement="top" title="Delete"></i>
+					        	<% end %></td>
+						    	</tr>
+								<% end %>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<%= will_paginate projects %>
+
+	<div class="modal"></div>

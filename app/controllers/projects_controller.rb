@@ -25,7 +25,11 @@ class ProjectsController < ApplicationController
   def index
     add_breadcrumb "Home", root_path
     add_breadcrumb "Projects", projects_path, :title => "Back to the Index"
-  	@projects = Project.all
+  	@filterrific = initialize_filterrific(
+      Project,
+      params[:filterrific]
+    ) or return
+    @projects = @filterrific.find.page(params[:page])
   end
 
   def edit

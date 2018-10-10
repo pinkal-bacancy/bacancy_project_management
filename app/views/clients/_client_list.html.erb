@@ -1,0 +1,46 @@
+<div class="row">
+	<div class="col-12">
+	  <div class="card">
+	    <div class="card-body">
+				<div class="table-responsive m-t-40">
+
+				  <table id="example23" class="desk-table display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+				  	<thead>
+					    <tr>
+				        <th>Name</th>
+				        <th>Email</th>
+				        <th>Contact</th>
+				        <th>Country</th>
+				        <th>Actions</th>
+					    </tr>
+						</thead>
+						<tbody>
+							<% clients&.each do |client| %>
+								<tr>
+					        <td><%= client&.client_name %></td>
+					        <td><%= client&.client_email %></td>
+					        <td><%= client&.client_contact %></td>
+					        <td><%= client&.country %></td>
+					        <td>
+					        	<%= link_to client_path(client),remote: true do %> 
+					        		<i class="fa fa-eye icon-color-size" data-toggle="tooltip" data-placement="top" title="Show"></i>   
+					        	<% end %>
+					        	<%= link_to edit_client_path(client) do %> 
+					        		<i class="fa fa-edit icon-color-size" data-toggle="tooltip" data-placement="top" title="Edit"></i>   
+					        	<% end %>
+					        	<%= link_to client_path(client), method: :delete, data: {confirm: 'Are you sure? '} do %> 
+					        		<i class="fa fa-trash icon-color-size" data-toggle="tooltip" data-placement="top" title="Delete"></i>
+					        	<% end %>
+					        </td>
+					    	</tr>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal" style="display:none;">
+</div>
