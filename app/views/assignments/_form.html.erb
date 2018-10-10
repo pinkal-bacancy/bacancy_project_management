@@ -18,7 +18,7 @@
 <div class="form-group m-t-40 row">
 	<%= f.label :employee_ids, class: "col-2 col-form-label" %>
 	<div class="col-10">
-		<%= f.select :employee_ids, Employee.all.collect { |p| [ p.username, p.id ] }, {include_blank: "select"}, {class: "select2 form-control custom-select js-example-basic-single bg-grey", multiple: true} %>
+		<%= f.select :employee_ids, employee_with_role.collect { |p| [ p.username, p.id ] }, {include_blank: "select"}, {class: "select2 form-control custom-select js-example-basic-single bg-grey", multiple: true} %>
 	</div>
 </div>
 

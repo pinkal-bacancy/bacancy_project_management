@@ -30,9 +30,11 @@
 //= require jquery.validate
 //= require activestorage
 //= require datatable.min
-//= require toastr.js
+//= require toastr
 //= require material-datetimepicker
 //= require datepicker
+//= require Chart.bundle
+//= require chartkick
 
 toastr.options = {
   "closeButton": true,

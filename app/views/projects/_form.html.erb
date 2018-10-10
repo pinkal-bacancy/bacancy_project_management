@@ -44,6 +44,13 @@
 </div>
 
 <div class="form-group m-t-40 row">
+	<%= f.label :budget, class: "col-2 col-form-label" %>
+	<div class="col-10">
+		<%= f.text_field :price, class: "form-control",placeholder: "Budget"%>
+	</div>
+</div>
+
+<div class="form-group m-t-40 row">
 	<%= f.label :rough_order_magnitude, class: "col-2 col-form-label" %>
 	<div class="col-10">
 		<%= f.text_field :rough_order_magnitude, class: "form-control",placeholder: "Rough Order Magnitude"%>

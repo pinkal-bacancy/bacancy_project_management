@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_08_072134) do
+ActiveRecord::Schema.define(version: 2018_10_09_064208) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 2018_10_08_072134) do
     t.date "start_date"
     t.date "end_date"
     t.bigint "project_id"
-    t.boolean "is_primary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_assignments_on_project_id"
@@ -52,6 +51,7 @@ ActiveRecord::Schema.define(version: 2018_10_08_072134) do
     t.text "primary_technology"
     t.text "secondary_technology"
     t.string "username"
+    t.boolean "is_primary"
     t.index ["email"], name: "index_employees_on_email", unique: true
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
   end
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2018_10_08_072134) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "employee_id"
+    t.integer "price"
     t.index ["client_id"], name: "index_projects_on_client_id"
     t.index ["employee_id"], name: "index_projects_on_employee_id"
   end
