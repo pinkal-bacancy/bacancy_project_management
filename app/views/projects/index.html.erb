@@ -13,6 +13,7 @@
 						        <th>End Date</th>
 						        <th>Rough Order Magnitude</th>
 						        <th>PM</th>
+						        <th>Budget</th>
 						        <th>Client</th>
 						        <th>Technologies</th>
 						        <th colspan="3">Action</th>
@@ -27,6 +28,7 @@
 						        <td><%= project&.end_date %></td>
 						        <td><%= project&.rough_order_magnitude %></td>
 						        <td><%= find_employee(project) %></td>
+						        <td><%= project&.price.format %></td>
 						        <td><%= project&.client&.client_name %></td>
 						        <!-- label label-info -->
 						        <td><% project&.technologies.each do |technology| %>

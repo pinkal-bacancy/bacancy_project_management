@@ -11,7 +11,9 @@
           </select>
         </div>
       </div>
-      <div id="income" style="height:260px; width:100%;"></div>
+      <div id="income" style="height:260px; width:100%;">
+        <%= pie_chart Employee.where(is_primary: true).count %>
+      </div>
       <ul class="list-inline m-t-30 text-center font-12">
         <li><i class="fa fa-circle text-success"></i> Growth</li>
         <li><i class="fa fa-circle text-info"></i> Net</li>

@@ -17,4 +17,26 @@ module ApplicationHelper
 	def total_project_count
 		@projects = Project.count
 	end
+
+	def employee_with_role
+		@pm = []
+		Employee.all.each do |employee|
+			@pm << employee unless employee.has_role? "PM"
+		end
+		return @pm
+	end
+
+	def find_employee_more_than_one_project
+		employee_with_role
+		@emp = []
+ 		@pm.each do |e|
+    	@emp << e if e.assignments.count > 1
+ 		end
+ 		return @emp
+	end
+
+	def find_project(assignment)
+		Project.find(assignment.project_id).project_name
+	end
+
 end
