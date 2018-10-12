@@ -1,2 +1,31 @@
-<h1>LeaveLists#new</h1>
-<p>Find me in app/views/leave_lists/new.html.erb</p>
+<%= javascript_include_tag "leave_lists"  %>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-body">
+				<h4 class="card-title">Add Leave</h4>
+				<%= form_for @leave_list,class: "form" do |f| %>
+					<%= render "form", f: f %>
+					<%= f.submit "Add Leave", id: "leave_list_submit", class: "btn btn-success waves-effect waves-light m-r-10" %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(document).on('ready',function(){
+		LeaveLists.form.formValidation();
+		$("#leave_list_end_date").change(function () {
+			alert();
+	    var startDate = document.getElementById("leave_list_start_date").value;
+	    var endDate = document.getElementById("leave_list_end_date").value;
+	    debugger;
+	    if ((Date.parse(startDate) <= Date.parse(endDate))) {
+	    	debugger;
+	        alert("End date should be greater than Start date");
+	        document.getElementById("EndDate").value = "";
+	    }
+		});
+	});
+</script>

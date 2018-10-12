@@ -1,2 +1,20 @@
-<h1>LeaveLists#edit</h1>
-<p>Find me in app/views/leave_lists/edit.html.erb</p>
+<%= javascript_include_tag "leave_lists"  %>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Edit Leave</h4>
+				<%= form_for @leave_list do |f| %>
+					<%= render "form", f: f %>
+					<%= f.submit "Update Leave", id: "employee_submit", class: "btn btn-success waves-effect waves-light m-r-10" %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(document).on('ready',function(){
+		LeaveLists.form.formValidation();
+	});
+</script>
