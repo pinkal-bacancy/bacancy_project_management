@@ -34,8 +34,6 @@
 //= require material-datetimepicker
 //= require datepicker
 //= require filterrific/filterrific-jquery
-//= require Chart.bundle
-//= require chartkick
 
 toastr.options = {
   "closeButton": true,

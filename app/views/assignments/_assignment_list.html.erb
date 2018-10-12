@@ -10,7 +10,6 @@
 				        <th>Project</th>
 				        <th>Employees</th>
 				        <th>Client</th>
-				        <th>Technologies</th>
 				        <th>Action</th>
 					    </tr>
 						</thead>
@@ -23,10 +22,6 @@
 					        	<% end %>
 					        </td>
 					        <td><%= assignment&.project&.client&.client_name %></td>
-					        <td><% assignment&.project.technologies.each do |technology| %>
-					        	<span class="label label-inverse"><%= technology&.name %></span><br>
-					        	<% end %>
-					        </td>
 					        <td>
 					        	<%= link_to assignment_path(assignment),remote: true do %> 
 					        		<i class="fa fa-eye icon-color-size" data-toggle="tooltip" data-placement="top" title="Show"></i>&nbsp;&nbsp;&nbsp;
@@ -37,8 +32,6 @@
 					        	<%= link_to assignment_path(assignment), method: :delete, data: {confirm: 'Are you sure? '} do %> 
 					        		<i class="fa fa-trash icon-color-size" data-toggle="tooltip" data-placement="top" title="Delete"></i>
 					        	<% end %>
-					        	<%#= link_to "Edit",edit_assignment_path(assignment), class: "btn btn-success"%>
-					        	<%#= button_to "Delete", assignment, method: :delete,  class: "btn btn-danger",data: { confirm: 'Are you sure you want to delete this?' } %>
 					        </td>
 					    	</tr>
 							<% end %>
