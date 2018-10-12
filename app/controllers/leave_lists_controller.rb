@@ -22,7 +22,14 @@ class LeaveListsController < ApplicationController
     @leave_lists = @filterrific.find.page(params[:page])
   end
 
-  def edit
+  def edit; end
+
+  def update
+    if @leave_list.update(leave_list_params)
+      redirect_to leave_lists_path
+    else
+      render 'edit'
+    end
   end
 
   def show
