@@ -1,0 +1,25 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Assignment Detail</h4>
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    <div class="modal-body">
+    	Project Name: <%= assignment&.project&.project_name %><br>
+    	Start Date: <%= assignment&.start_date %><br>
+    	End Date: <%= assignment&.end_date %><br>
+      Employees:  <% assignment&.employees.each do |employee| %>
+                    <%= employee&.username %><br>
+                  <% end %>
+      Client: <%= assignment&.project&.client&.client_name %>
+      Technologies: <% assignment&.project.technologies.each do |technology| %>
+                      <%= technology&.name %><br>
+                    <% end %>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(".close").click(function(){
+    $(".modal").hide();
+  });
+</script>
