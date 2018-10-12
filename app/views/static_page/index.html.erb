@@ -5,7 +5,9 @@
         <p class="loader__label">Elegant admin</p>
     </div>
 </div> -->
-<script src="chartkick.js"></script>
+<script src="https://code.highcharts.com/highcharts.src.js"></script>
+<%= javascript_include_tag "chartkick" %>
+
   <!-- End Bread crumb and right sidebar toggle -->
   <%= render partial: 'indexraw1'%> <!-- Row1 -->
   <%= render partial: 'indexraw2', locals: {project_list: @project_list, top_budget_project: @top_budget_project}%> <!-- Row2 -->

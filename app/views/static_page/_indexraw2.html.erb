@@ -14,15 +14,17 @@
           </thead>
           <tbody>
             <% top_budget_project&.each do |project| %>
-              <tr>
-                <td><%= project&.project_name %></td>
-                <td><%= project&.price.format %></td>
-                <td><%= project&.client&.client_name %></td>
-                <td><% project&.technologies.each do |technology| %>
-                  <span class="label label-inverse"><%= technology&.name%></span><br>
-                  <% end %>
-                </td>
-              </tr>
+              <%= link_to project_path(project), remote: true do %>
+                <tr>
+                  <td><%= project&.project_name %></td>
+                  <td><%= project&.price.format %></td>
+                  <td><%= project&.client&.client_name %></td>
+                  <td><% project&.technologies.each do |technology| %>
+                    <span class="label label-inverse"><%= technology&.name%></span><br>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
             <% end %>
           </tbody>
         </table>

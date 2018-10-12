@@ -113,7 +113,7 @@
                 <tr>
                   <td><%= employee&.username %></td>
                   <td class="txt-oflo"><% employee&.assignments.each do |assignment| %><%= find_project(assignment) %><br><% end %></td>
-                  <td><%= employee&.primary_technology%></td>
+                  <td><%= employee&.technology&.name %></td>
                 </tr>
               <% end %>  
             </tbody>

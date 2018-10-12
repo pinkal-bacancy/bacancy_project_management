@@ -5,10 +5,39 @@
       <button type="button" class="close" data-dismiss="modal">&times;</button>
     </div>
     <div class="modal-body">
-    	Name: <%= employee&.first_name %><%= employee&.last_name %><br>
-    	Email: <%= employee&.email %><br>
-    	Technology: <%= employee&.technology&.name %><br>
-      Role: <%= employee&.roles&.first&.name %>
+
+      <div class="card oh">
+        <div class="card-body">
+          <h5 class="card-title"><%= employee&.first_name.capitalize %> <%= employee&.last_name.capitalize %> </h5>
+          <table id="example23" class="display nowrap table color-table inverse-table" cellspacing="0" width="100%">
+            <tr>
+              <td>Name</td>
+              <td><%= employee&.first_name %> <%= employee&.last_name %></td>
+            </tr>
+            <tr>
+              <td>Email</td>
+              <td><%= employee&.email %></td>
+            </tr>
+            <tr>
+              <td>Primary Technology</td>
+              <td><%= employee&.technology&.name %></td>
+            </tr>
+            <tr>
+              <td>Secondary Technology</td>
+              <td><%= employee&.secondary_technology %></td>
+            </tr>
+            <tr>
+              <td>Role</td>
+              <td><%= employee&.roles&.first&.name %></td>
+            </tr>
+            <tr>
+              <td>Is Primary</td>
+              <td><%= employee&.is_primary %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

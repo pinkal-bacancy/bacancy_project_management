@@ -11,8 +11,6 @@
 						        <th>Email</th>
 						        <th>Name</th>
 						        <th>Username</th>
-						        <th>Primary Technology</th>
-						        <th>Secondary Technology</th>
 						        <th>Role</th>
 						        <th>Change Role</th>
 						        <th>Action</th>
@@ -24,8 +22,6 @@
 						        <td><%= employee&.email %></td>
 						        <td><%= employee&.first_name %> <%= employee&.last_name %></td>
 						        <td><%= employee&.username %></td>
-						        <td><%= employee&.technology&.name %></td>
-						        <td><%= employee&.secondary_technology %></td>
 						        <td id="employee-role-<%= employee&.id%>"><%= employee&.roles&.first&.name %></td>
 						        <td>
 						        		<%= select_tag "role",options_for_select(@roles.map{|role| [role&.name,role&.id]}, selected: employee&.roles&.first&.id),id: "select-#{employee&.id}", data: { value: "#{employee&.id}"} %>

@@ -3,20 +3,19 @@
   <div class="card o-income">
     <div class="card-body">
       <div class="d-flex m-b-30 no-block">
-        <h4 class="card-title m-b-0 align-self-center">Daily Income</h4>
-        <div class="ml-auto">
-          <select class="custom-select border-0">
-            <option selected="">Today</option>
-            <option value="1">Tomorrow</option>
-          </select>
-        </div>
+        <h4 class="card-title m-b-0 align-self-center">Employee Chart</h4>
       </div>
-      <div id="income" style="height:260px; width:100%;">
-        <%= pie_chart Employee.where(is_primary: true).count %>
+      <div id="income">
+        <center>
+          <%= pie_chart Employee.group(:is_primary).count, refresh: 60, messages: {empty: "No data"},  width: "350px", height: "280px", colors: ["#e27948", "#000000"], library: {plotOptions: {pie: {dataLabels: {format: "<b>Dedicated</b>"}}}} %>
+
+
+
+        </center>
       </div>
       <ul class="list-inline m-t-30 text-center font-12">
-        <li><i class="fa fa-circle text-success"></i> Growth</li>
-        <li><i class="fa fa-circle text-info"></i> Net</li>
+        <li><i class="fa fa-circle" style="color: #000;"></i> Dedicated</li>
+        <li><i class="fa fa-circle" style="color: #e27948;"></i> Non-dedicated</li>
       </ul>
     </div>
   </div>

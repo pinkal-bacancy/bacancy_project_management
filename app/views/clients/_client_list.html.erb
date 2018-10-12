@@ -22,9 +22,6 @@
 					        <td><%= client&.client_contact %></td>
 					        <td><%= client&.country %></td>
 					        <td>
-					        	<%= link_to client_path(client),remote: true do %> 
-					        		<i class="fa fa-eye icon-color-size" data-toggle="tooltip" data-placement="top" title="Show"></i>   
-					        	<% end %>
 					        	<%= link_to edit_client_path(client) do %> 
 					        		<i class="fa fa-edit icon-color-size" data-toggle="tooltip" data-placement="top" title="Edit"></i>   
 					        	<% end %>
