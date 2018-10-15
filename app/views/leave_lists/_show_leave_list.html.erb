@@ -1,0 +1,40 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Leave Detail</h4>
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    <div class="modal-body">
+
+      <div class="card oh">
+        <div class="card-body">
+          <h5 class="card-title"></h5>
+          <table id="example23" class="display nowrap table color-table inverse-table" cellspacing="0" width="100%">
+            <tr>
+              <td>Name</td>
+              <td><%= leave_list&.employee&.first_name %> <%= leave_list&.employee&.last_name %></td>
+            </tr>
+            <tr>
+              <td>Project Name</td>
+              <td><%= leave_list&.project&.project_name %></td>
+            </tr>
+             <tr>
+              <td>Start Date</td>
+              <td><%= leave_list&.start_date %></td>
+            </tr>
+            <tr>
+              <td>End Date</td>
+              <td><%= leave_list&.end_date %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(".close").click(function(){
+    $(".modal").hide();
+  });
+</script>

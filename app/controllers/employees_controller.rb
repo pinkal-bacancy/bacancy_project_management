@@ -51,6 +51,7 @@ class EmployeesController < ApplicationController
     @roles = Role.all
     @employee&.roles&.delete_all
     @employee&.add_role params[:role]
+    @employees = Employee.page(params[:page])
   end
 
   # def unique_employee

@@ -7,7 +7,7 @@
       </div>
       <div id="income">
         <center>
-          <%= pie_chart Employee.group(:is_primary).count, refresh: 60, messages: {empty: "No data"},  width: "350px", height: "280px", colors: ["#e27948", "#000000"], library: {plotOptions: {pie: {dataLabels: {format: "<b>Dedicated</b>"}}}} %>
+          <%= pie_chart Employee.group(:is_primary).count, donut: true, refresh: 60, messages: {empty: "No data"},  width: "350px", height: "280px", colors: ["#e27948", "#000000"], library: {plotOptions: {pie: {dataLabels: {format: "<b>Dedicated</b>"}}}} %>
 
 
 
