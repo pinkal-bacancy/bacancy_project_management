@@ -16,16 +16,5 @@
 <script type="text/javascript">
 	$(document).on('ready',function(){
 		LeaveLists.form.formValidation();
-		$("#leave_list_end_date").change(function () {
-			alert();
-	    var startDate = document.getElementById("leave_list_start_date").value;
-	    var endDate = document.getElementById("leave_list_end_date").value;
-	    debugger;
-	    if ((Date.parse(startDate) <= Date.parse(endDate))) {
-	    	debugger;
-	        alert("End date should be greater than Start date");
-	        document.getElementById("EndDate").value = "";
-	    }
-		});
 	});
 </script>

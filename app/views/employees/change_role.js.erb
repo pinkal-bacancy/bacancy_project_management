@@ -1,2 +1,1 @@
-$("#employee-role-<%= @employee&.id %>").html('<%= @employee&.roles&.first&.name %>');
-<%= select_tag "role",options_for_select(@roles.map{|role| [role&.name,role&.id]}, selected: @employee&.roles&.first&.id),id: "select-#{@employee&.id}", data: { value: "#{@employee&.id}"} %>
+ $('#filterrific_results').html('<%= escape_javascript(render "employee_list", employees: @employees) %>');

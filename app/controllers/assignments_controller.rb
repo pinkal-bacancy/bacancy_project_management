@@ -3,6 +3,8 @@
 # assignment controller
 class AssignmentsController < ApplicationController
   before_action :find_assignment, only: %i[edit update destroy show]
+  before_action :breadcrumb_path, only: %i[new show]
+
   def new
     @assignment = Assignment.new
   end
@@ -21,6 +23,8 @@ class AssignmentsController < ApplicationController
   end
 
   def index
+    add_breadcrumb 'Home', root_path
+    add_breadcrumb 'Assignments', assignments_path
     @filterrific = initialize_filterrific(
       Assignment,
       params[:filterrific]
@@ -53,6 +57,12 @@ class AssignmentsController < ApplicationController
   def show; end
 
   private
+
+  def breadcrumb_path
+    add_breadcrumb 'Home', root_path
+    add_breadcrumb 'Assignments', assignments_path
+    add_breadcrumb 'Add Assignment', new_assignment_path
+  end
 
   def find_assignment
     @assignment = Assignment.find(params[:id]) rescue nil
