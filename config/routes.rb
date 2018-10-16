@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     registrations: 'employees/registrations',
   }
   
+  get 'static_page/profile'
   get 'static_page/index'
   root 'static_page#index'
 end

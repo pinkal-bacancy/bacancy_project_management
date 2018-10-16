@@ -3,7 +3,10 @@
     <div class="col-12">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Employee List</h4>
+        	<div class="row">
+          	<div class="col-10"><h4 class="card-title">Employee List</h4></div>
+          	<div class="col-2"><%= link_to 'Add Employee', new_employee_path, class: "btn btn-warning change-employee-role" %></div>
+        	</div>
 					<div class="table-responsive m-t-40">
 					  <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
 					  	<thead>
@@ -37,7 +40,6 @@
 	$(document).on('ready',function(){
 		$(".change-employee-role").on("click", function(){
 			$(this).parent().find('select option:selected').text();
-			debugger;
 				$.ajax({
 	         url: '/change_role.js',
 	         method: 'GET',

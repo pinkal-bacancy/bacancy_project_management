@@ -8,34 +8,11 @@
       <div id="income">
         <center>
           <%= pie_chart Employee.group(:is_primary).count, donut: true, refresh: 60, messages: {empty: "No data"},  width: "350px", height: "280px", colors: ["#e27948", "#000000"], library: {plotOptions: {pie: {dataLabels: {format: "<b>Dedicated</b>"}}}} %>
-
-
-
         </center>
       </div>
       <ul class="list-inline m-t-30 text-center font-12">
         <li><i class="fa fa-circle" style="color: #000;"></i> Dedicated</li>
         <li><i class="fa fa-circle" style="color: #e27948;"></i> Non-dedicated</li>
-      </ul>
-    </div>
-  </div>
-  <!-- card -->
-  <div class="card">
-    <div class="card-body">
-      <div class="d-flex m-b-30 no-block">
-        <h4 class="card-title m-b-0 align-self-center">Visitors</h4>
-        <div class="ml-auto">
-          <select class="custom-select border-0">
-            <option selected="">Today</option>
-            <option value="1">Tomorrow</option>
-          </select>
-        </div>
-      </div>
-      <div id="visitor" style="height:260px; width:100%;"></div>
-      <ul class="list-inline m-t-30 text-center font-12">
-        <li><i class="fa fa-circle text-primary"></i> Tablet</li>
-        <li><i class="fa fa-circle text-danger"></i> Desktops</li>
-        <li><i class="fa fa-circle text-info"></i> Mobile</li>
       </ul>
     </div>
   </div>
@@ -65,6 +42,37 @@
       <div class="m-l-10">
         <h3 class="m-b-0"><%= total_technology_count %></h3>
         <h6 class="text-muted font-light m-b-0">Your company's total Technologies</h6>
+      </div>
+    </div>
+  </div>
+  <!-- card -->
+  <div class="card">
+    <div class="card-body">
+      <div class="d-flex">
+          <div>
+            <h5 class="card-title">Employees</h5>
+            <h6 class="card-subtitle">Employees working in more than one project.</h6>
+          </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>NAME</th>
+              <th>PROJECTS</th>
+              <th>TECHNOLOGY</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% find_employee_more_than_one_project.each do |employee| %>
+              <tr>
+                <td><%= employee&.username %></td>
+                <td class="txt-oflo"><% employee&.assignments.each do |assignment| %><%= find_project(assignment) %><br><% end %></td>
+                <td><%= employee&.technology&.name %></td>
+              </tr>
+            <% end %>  
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

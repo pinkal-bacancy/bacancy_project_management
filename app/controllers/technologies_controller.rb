@@ -2,6 +2,7 @@
 
 # technology controller
 class TechnologiesController < ApplicationController
+  before_action :authenticate_employee!
   before_action :find_technology, only: %i[edit update destroy show]
   before_action :breadcrumb_path, only: %i[new show]
 

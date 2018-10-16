@@ -2,6 +2,7 @@
 
 # employee controller
 class EmployeesController < ApplicationController
+  before_action :authenticate_employee!
   before_action :find_employee, only: %i[edit update destroy show change_role]
   before_action :breadcrumb_path, only: %i[new show]
 
@@ -76,8 +77,8 @@ class EmployeesController < ApplicationController
 
   def breadcrumb_path
     add_breadcrumb "Home", root_path
-    add_breadcrumb "Employees", employees_path, :title => "Back to the Index"
-    add_breadcrumb "Add Employee", new_employee_path, :title => "Back to the Index"
+    add_breadcrumb "Employees", employees_path, title: "Back to the Index"
+    add_breadcrumb "Add Employee", new_employee_path, title: "Back to the Index"
   end
 
   def find_employee

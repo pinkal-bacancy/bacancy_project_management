@@ -44,6 +44,10 @@
 <div class="form-group m-t-40 row">
 	<%= f.label :is_primary, class: "col-2 col-form-label" %>
 	<div class="col-10">
-		<%= f.check_box :is_primary, class: "form-control"%>
+		<% if current_page? (static_page_profile_url) %>
+			<%= f.check_box :is_primary, class: "form-control", disabled: true%>
+		<% else %>
+			<%= f.check_box :is_primary, class: "form-control"%>
+		<% end %>
 	</div>
 </div>

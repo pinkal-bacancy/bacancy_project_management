@@ -2,6 +2,7 @@
 
 # client controller
 class ClientsController < ApplicationController
+  before_action :authenticate_employee!
   before_action :find_client, only: %i[edit update destroy show]
   before_action :breadcrumb_path, only: %i[new show]
 

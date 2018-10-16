@@ -15,21 +15,13 @@
           <% end %>
         </li>
         <li>
-          <%= link_to '', class: 'has-arrow waves-effect waves-dark' do %>
-            <i class="fa fa-user"></i><span class="hide-menu">Employee</span>
+          <%= link_to employees_path, class: 'has-arrow waves-effect waves-dark' do %>
+            <i class="fa fa-user"></i>Employees
           <% end %>
-          <ul aria-expanded="false" class="collapse">
-            <li>
-              <%= link_to employees_path do %>
-                <i class="fa fa-users"></i><span class="hide-menu">Employee List</span>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to new_employee_path do %>
-                <i class="fa fa-user-plus"></i><span class="hide-menu">New Employee</span>
-              <% end %>
-            </li>
-          </ul>
+          <!-- <ul aria-expanded="false" class="collapse">
+            <li><%#= link_to 'Employee List', employees_path %></li>
+            <li><%#= link_to 'New Employee', new_employee_path%></li>
+          </ul> -->
         </li>
         <li>
           <%= link_to '', class: 'has-arrow waves-effect waves-dark' do %>
@@ -37,7 +29,7 @@
           <% end %>
           <ul aria-expanded="false" class="collapse">
             <li><%= link_to 'Project List',projects_path %></li>
-            <li><%= link_to 'New Project', new_project_path %></li>
+            <li><%#= link_to 'New Project', new_project_path %></li>
             <li><%= link_to 'Assign Employee to Project', new_assignment_path %></li>
             <li><%= link_to 'Project wise Employee List', assignments_path %></li>
           </ul>
@@ -74,7 +66,7 @@
 
         <% if employee_signed_in? %>  
           <li>
-            <%= link_to '', class: 'has-arrow waves-effect waves-dark' do %>
+            <%= link_to static_page_profile_path, class: 'has-arrow waves-effect waves-dark' do %>
               <span class="hide-menu">Profile<%#= current_employee&.username[0]&.upcase%></span>
             <% end %>
           </li>

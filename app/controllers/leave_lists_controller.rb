@@ -1,4 +1,5 @@
 class LeaveListsController < ApplicationController
+  before_action :authenticate_employee!
 	before_action :find_leave_list, only: %i[edit update destroy show]
   before_action :breadcrumb_path, only: %i[new show]
 

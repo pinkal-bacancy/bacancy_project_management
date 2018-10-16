@@ -2,6 +2,7 @@
 
 # assignment controller
 class AssignmentsController < ApplicationController
+  before_action :authenticate_employee!
   before_action :find_assignment, only: %i[edit update destroy show]
   before_action :breadcrumb_path, only: %i[new show]
 
