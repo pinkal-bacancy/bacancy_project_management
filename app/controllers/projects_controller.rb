@@ -29,7 +29,8 @@ class ProjectsController < ApplicationController
       Project,
       params[:filterrific]
     ) or return
-    @projects = @filterrific.find.page(params[:page])
+    @projects = @filterrific.find.eager_load(:technologies).page(params[:page])
+    
   end
 
   def edit
@@ -55,6 +56,10 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @assignments = @project.assignments.eager_load(:assignments_employees)
+    # render json: @assignments
+    # return
+    # # [0].employees
   end
 
   private

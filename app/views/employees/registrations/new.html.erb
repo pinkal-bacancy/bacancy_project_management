@@ -28,7 +28,7 @@
           </div>
           <div class="form-group">
             <div class="col-xs-12">
-              <%= f.text_field :primary_technology, class: "form-control", placeholder: 'Primary Technology' %>
+              <%= f.select :technology_id, Technology.all.collect { |technology| [ technology&.name, technology&.id ] }, {include_blank: "select"}, {class: "select2 form-control custom-select",} %>
             </div>
           </div>
           <div class="form-group">
