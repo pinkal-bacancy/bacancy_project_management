@@ -6,6 +6,8 @@ class Employee < ApplicationRecord
   has_many :projects
   has_and_belongs_to_many :assignments
   belongs_to :technology
+  has_many :technology_experiences
+  accepts_nested_attributes_for :technology_experiences
   filterrific(
    available_filters: [
      :search_by_email,

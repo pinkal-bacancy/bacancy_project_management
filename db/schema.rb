@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_09_132609) do
+ActiveRecord::Schema.define(version: 2018_10_22_135324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(version: 2018_10_09_132609) do
     t.string "last_name"
     t.text "secondary_technology"
     t.string "username"
-    t.boolean "is_primary"
     t.bigint "technology_id"
+    t.boolean "is_primary"
     t.index ["email"], name: "index_employees_on_email", unique: true
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
     t.index ["technology_id"], name: "index_employees_on_technology_id"
@@ -111,9 +111,22 @@ ActiveRecord::Schema.define(version: 2018_10_09_132609) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "technology_experiences", force: :cascade do |t|
+    t.bigint "employee_id"
+    t.bigint "technology_id"
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_technology_experiences_on_employee_id"
+    t.index ["technology_id"], name: "index_technology_experiences_on_technology_id"
+  end
+
   add_foreign_key "assignments", "projects"
   add_foreign_key "employees", "technologies"
   add_foreign_key "leave_lists", "employees"
   add_foreign_key "leave_lists", "projects"
   add_foreign_key "projects", "employees"
+  add_foreign_key "technology_experiences", "employees"
+  add_foreign_key "technology_experiences", "technologies"
 end
