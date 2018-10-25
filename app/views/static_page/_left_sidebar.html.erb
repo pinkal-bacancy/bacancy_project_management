@@ -15,13 +15,13 @@
           <% end %>
         </li>
         <li>
-          <%= link_to employees_path, class: 'has-arrow waves-effect waves-dark' do %>
+          <%= link_to '', class: 'has-arrow waves-effect waves-dark' do %>
             <i class="fa fa-user"></i>Employees
           <% end %>
-          <!-- <ul aria-expanded="false" class="collapse">
-            <li><%#= link_to 'Employee List', employees_path %></li>
-            <li><%#= link_to 'New Employee', new_employee_path%></li>
-          </ul> -->
+          <ul aria-expanded="false" class="collapse">
+            <li><%= link_to 'Employee List', employees_path %></li>
+            <li><%= link_to 'New Employee', new_employee_path%></li>
+          </ul>
         </li>
         <li>
           <%= link_to '', class: 'has-arrow waves-effect waves-dark' do %>
@@ -29,7 +29,7 @@
           <% end %>
           <ul aria-expanded="false" class="collapse">
             <li><%= link_to 'Project List',projects_path %></li>
-            <li><%#= link_to 'New Project', new_project_path %></li>
+            <li><%= link_to 'New Project', new_project_path %></li>
             <li><%= link_to 'Assign Employee to Project', new_assignment_path %></li>
             <li><%= link_to 'Project wise Employee List', assignments_path %></li>
           </ul>

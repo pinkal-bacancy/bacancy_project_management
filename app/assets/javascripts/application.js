@@ -34,6 +34,7 @@
 //= require material-datetimepicker
 //= require datepicker
 //= require filterrific/filterrific-jquery
+//= require jquery_nested_form
 
 toastr.options = {
   "closeButton": true,

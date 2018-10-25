@@ -4,10 +4,11 @@
 class EmployeesController < ApplicationController
   before_action :authenticate_employee!
   before_action :find_employee, only: %i[edit update destroy show change_role]
-  before_action :breadcrumb_path, only: %i[new show]
+  before_action :breadcrumb_path, only: %i[new index edit]
 
   def new
     @employee = Employee.new
+    add_breadcrumb "Add Employee", new_employee_path, title: "Back to the Index"
   end
 
   def create
@@ -28,9 +29,6 @@ class EmployeesController < ApplicationController
       params[:filterrific]
     ) or return
     @employees = @filterrific.find.page(params[:page])
-    add_breadcrumb 'Home', root_path
-    add_breadcrumb 'Employees', employees_path
-   # @employees = Employee.all
     @roles = Role.all
     respond_to do |format|
       format.html
@@ -38,7 +36,9 @@ class EmployeesController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    add_breadcrumb "Edit Employee"
+  end
 
   def update
     if @employee.update(employee_params)
@@ -78,7 +78,6 @@ class EmployeesController < ApplicationController
   def breadcrumb_path
     add_breadcrumb "Home", root_path
     add_breadcrumb "Employees", employees_path, title: "Back to the Index"
-    add_breadcrumb "Add Employee", new_employee_path, title: "Back to the Index"
   end
 
   def find_employee
@@ -86,8 +85,6 @@ class EmployeesController < ApplicationController
   end
 
   def employee_params
-    params.require(:employee).permit(:first_name, :last_name,
-                                     :username, :technology_id,
-                                     :secondary_technology,technology_experiences: [:id,:technology_id, :employee_id,:start_date,:end_date], :email, :is_primary)
+    params.require(:employee).permit(:first_name, :last_name, :username, :technology_id, :email, :is_primary, technology_experiences_attributes: [:id, :technology_id, :employee_id, :start_date, :end_date, :_destroy])
   end
 end
