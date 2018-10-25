@@ -17,4 +17,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w( employees.js clients.js projects.js assignments.js rails.js leave_lists.js)
 Rails.application.config.assets.precompile += %w( filterrific/filterrific-spinner.gif )
 Rails.application.config.assets.precompile += %w( Chart.bundle.js chartkick.js )
-
+Rails.application.config.assets.precompile += %w( nested_form.js )
