@@ -88,6 +88,6 @@ class EmployeesController < ApplicationController
   def employee_params
     params.require(:employee).permit(:first_name, :last_name,
                                      :username, :technology_id,
-                                     :secondary_technology, :email, :is_primary)
+                                     :secondary_technology,technology_experiences: [:id,:technology_id, :employee_id,:start_date,:end_date], :email, :is_primary)
   end
 end
