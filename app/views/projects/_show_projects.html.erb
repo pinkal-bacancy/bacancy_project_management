@@ -34,21 +34,10 @@
               <td>Rough Order Magnitute</td>
               <td><%= project&.rough_order_magnitude%></td>
             </tr>
-            <tr>
-              <td>Employees</td>
-              <td>
-                <%@assignments.each do |assignment|%>
-                  <%assignment.employees.each do |employee|%>
-                    <span class="label label-inverse"><%= employee&.first_name %> <%= employee&.last_name %></span>
-                  <%end%>
-                <%end%>
-              </td>
-            </tr>
           </table>
         </div>
       </div>
 
-     
     </div>
   </div>
 </div>

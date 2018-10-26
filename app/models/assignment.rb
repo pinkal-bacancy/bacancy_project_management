@@ -4,7 +4,8 @@
 class Assignment < ApplicationRecord
   # belongs_to :employee
   belongs_to :project
-  has_and_belongs_to_many :employees
+  has_many :assignment_employees
+  has_many :employees, through: :assignment_employees
   filterrific(
    available_filters: [
      :search_by_employee,

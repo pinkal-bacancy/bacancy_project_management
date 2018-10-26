@@ -2,9 +2,9 @@
 
 # employee model
 class Employee < ApplicationRecord
-  # has_many :assignments
   has_many :projects
-  has_and_belongs_to_many :assignments
+  has_many :assignment_employees
+  has_many :assignments, through: :assignment_employees
   belongs_to :technology
   has_many :technology_experiences
   accepts_nested_attributes_for :technology_experiences

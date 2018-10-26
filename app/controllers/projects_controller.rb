@@ -56,10 +56,6 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @assignments = @project.assignments.eager_load(:assignments_employees)
-    # render json: @assignments
-    # return
-    # # [0].employees
   end
 
   private

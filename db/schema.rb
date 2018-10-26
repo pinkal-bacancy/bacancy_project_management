@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_25_111217) do
+ActiveRecord::Schema.define(version: 2018_10_25_140108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assignment_employees", force: :cascade do |t|
+    t.boolean "is_dedicated"
+    t.bigint "employees_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "projects_id"
+    t.index ["employees_id"], name: "index_assignment_employees_on_employees_id"
+    t.index ["projects_id"], name: "index_assignment_employees_on_projects_id"
+  end
 
   create_table "assignments", force: :cascade do |t|
     t.date "start_date"
@@ -22,11 +34,6 @@ ActiveRecord::Schema.define(version: 2018_10_25_111217) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_assignments_on_project_id"
-  end
-
-  create_table "assignments_employees", id: false, force: :cascade do |t|
-    t.bigint "assignment_id", null: false
-    t.bigint "employee_id", null: false
   end
 
   create_table "clients", force: :cascade do |t|
@@ -120,6 +127,7 @@ ActiveRecord::Schema.define(version: 2018_10_25_111217) do
     t.index ["technology_id"], name: "index_technology_experiences_on_technology_id"
   end
 
+  add_foreign_key "assignment_employees", "projects", column: "projects_id"
   add_foreign_key "assignments", "projects"
   add_foreign_key "employees", "technologies"
   add_foreign_key "leave_lists", "employees"

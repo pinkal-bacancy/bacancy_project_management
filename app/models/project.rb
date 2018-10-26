@@ -4,6 +4,7 @@
 class Project < ApplicationRecord
   has_one :assignments
   has_many :employees
+  accepts_nested_attributes_for :assignments_employees
   has_and_belongs_to_many :technologies
   belongs_to :client
   filterrific(
